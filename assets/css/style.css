@@ -1,0 +1,296 @@
+/* ============================================================
+   WILSON GRILLS — style.css
+   Estrutura: base → layout → componentes → seções → utilitários
+   ============================================================ */
+
+
+/* ============================================================
+   1. BASE — reset, variáveis, elementos globais
+   ============================================================ */
+
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --color-dark:         #1A1A1A;
+    --color-darker:       #000000;
+    --color-brown:        #3E2723;
+    --color-card:         #2C2C2C;
+    --color-accent:       #D84315;
+    --color-accent-hover: #BF360C;
+    --color-white:        #FFFFFF;
+    --color-gray-300:     #D1D5DB;
+    --color-gray-400:     #9CA3AF;
+
+    /* Tokens de transição centralizados — mude aqui, aplica em tudo */
+    --transition-fast:    all 0.2s ease;
+    --transition-default: all 0.3s ease;
+
+    /* Tokens de borda */
+    --border-accent-20: rgba(216, 67, 21, 0.2);
+    --border-accent-30: rgba(216, 67, 21, 0.3);
+
+    --max-width: 1280px;
+}
+
+html {
+    scroll-behavior: smooth;
+    font-size: 16px;
+    /* Evita salto de layout ao abrir/fechar menus que alteram overflow */
+    scrollbar-gutter: stable;
+}
+
+body {
+    /*
+        CORREÇÃO: -apple-system e BlinkMacSystemFont eram redundantes no mesmo stack.
+        Removidos; Segoe UI cobre Windows, o restante cobre Linux e fallback.
+        Adicionado font-display implícito via stack de sistema — sem fonte externa,
+        sem risco de FOUT ou bloqueio de renderização.
+    */
+    font-family: 'Segoe UI', Oxygen, Ubuntu, Cantarell, sans-serif;
+    background-color: var(--color-dark);
+    color: var(--color-white);
+    line-height: 1.6;
+    overflow-x: hidden;
+    /*
+        CORREÇÃO: -webkit-font-smoothing melhora leitura em fundo escuro no macOS.
+        Sem isso, texto em fundos escuros pode parecer grosso/borrado no Safari.
+    */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+img {
+    max-width: 100%;
+    /*
+        CORREÇÃO: height: auto junto de max-width evita que imagens com width/height
+        explícitos no HTML fiquem distorcidas em telas menores.
+    */
+    width: 100vw;
+    height: 80vh;
+    display: block;
+}
+
+button {
+    border: none;
+    background: none;
+    cursor: pointer;
+    font-family: inherit;
+    transition: var(--transition-default);
+}
+
+/*
+    ADIÇÃO: foco visível global — obrigatório para acessibilidade (WCAG 2.4.7).
+    Remove o outline padrão feio do browser mas garante um substituto claro.
+    Sem isso, usuários de teclado ficam perdidos na página.
+*/
+:focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 3px;
+    border-radius: 4px;
+}
+
+/*HEADER */
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+/* Faz o link aparecer no topo da tela quando o usuário aperta 'Tab' */
+.sr-only:focus {
+  position: static;
+  width: auto;
+  height: auto;
+  padding: 10px;
+  margin: 0;
+  overflow: visible;
+  clip: auto;
+  white-space: normal;
+  background-color: #1A1A1A; 
+  color: #FFFFFF;      
+}
+
+header {
+    background: var(--color-darker);
+    position: relative;
+    
+}
+
+header::after {
+    content: "";
+    background: linear-gradient(to bottom, #000000 0 50%,  #d84215af 50% 100%);
+    position: absolute;
+    border:  1.5px solid var(--color-accent);
+    border-top: 1.5px solid black;
+    bottom: -30%;
+    left: 32.5%;
+    height: 7vh;
+    width: 28vw;
+    border-radius: 1rem;
+}
+.nav-link {
+    color: white;
+    transition: var(--transition-default);
+}
+.btn-orange {
+    color: white;
+    background-color: var(--color-accent);
+}
+
+.btn-orange:hover {
+    background-color: var(--color-accent-hover);
+}
+
+
+
+/*Section - home */
+
+section#home {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.75)), url('https://images.unsplash.com/photo-1627947063935-55577ec3c2e1?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1920');
+    width: 100vw;
+    height: 80vh;
+   background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.corlaranja {
+    color: var(--color-accent);
+}
+
+section#home  h1 {
+    font-size: clamp(2rem, 6vw + 1rem, 7rem);
+    line-height: 1.2;
+    display: block;
+}
+
+section#home div:first-child {
+    transform: translate(-4vw, -.5vh);
+}
+
+section#home div:nth-of-type(2) p {
+    font-size: 1.5rem;
+    color: var(--color-gray-300);
+    text-align: center;
+}
+
+.btn-orange-oco {
+    border: 2px solid var(--color-accent);
+    color: white;
+    margin-left: 2rem;
+}
+
+.btn-orange-oco:hover {
+     border: 2px solid var(--color-accent-hover);
+     background-color: var(--color-accent-hover);
+    color: white;
+}
+
+.aumenta {
+    height: 11vh;
+    width: 23vw;
+    line-height: 8vh;
+    font-weight: 700;
+    border-radius: .8rem;
+    font-size: 1.1rem;
+}
+
+/*section-serviço*/
+
+/* Limitação e Fundo */
+.custom-container {
+  max-width: var(--max-width);
+}
+
+.custom-bg-dark {
+  background-color: var(--color-dark);
+}
+
+.custom-text-gray-400 {
+  color: var(--color-gray-400);
+}
+
+/* Base de todos os Blocos de Card */
+.custom-card {
+  background-color: var(--color-card);
+  border: 1px solid var(--border-accent-20);
+  border-radius: 16px;
+  background-clip: padding-box;
+  transition: var(--transition-default);
+}
+
+.custom-card:hover {
+  border-color: var(--color-accent);
+}
+
+/* Força os textos dentro dos cards a respeitarem um limite proporcional */
+.custom-card p {
+  max-width: 650px;
+}
+
+/* Ícones Circulares (Exclusivo para a primeira linha de 3 cards) */
+.row:first-of-type .custom-card > div:first-of-type {
+  width: 60px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background-color: rgba(216, 67, 21, 0.1);
+  color: var(--color-accent);
+  margin-bottom: 1.25rem;
+}
+
+/* Fundo do Bloco Flexível (Sutil gradiente igual ao da imagem) */
+#container-flexivel {
+ background: linear-gradient(to left, var(--color-card)  40%, var(--border-accent-20) 100%);
+}
+
+/* ==========================================================================
+   Estilização Customizada da Seção Equipe (Cards)
+   ========================================================================== */
+
+/* Garante que o card ocupe 100% da altura da coluna e aplique o fundo escuro */
+.custom-card {
+    background-color: var(--color-card);
+    border: 1px solid var(--border-accent-20);
+    border-radius: 16px;
+    background-clip: padding-box;
+    transition: var(--transition-default);
+}
+
+/* Efeito Hover: Acende a borda em laranja ao passar o mouse */
+.custom-card:hover {
+    border-color: var(--color-accent);
+}
+
+/* Ajuste das imagens dentro dos cards da equipe para cobrir o espaço mantendo a proporção */
+.custom-card img {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    border-radius: 12px; /* Deixa as bordas da foto ligeiramente arredondadas como na imagem */
+}
+
+/* Força os textos descritivos dentro dos cards a respeitarem uma cor legível */
+.custom-card p.custom-text-gray-400 {
+    color: var(--color-gray-400);
+}
+
+/* Garante que os títulos h3 dentro dos cards fiquem brancos como na foto */
+.custom-card h3 {
+    color: #ffffff;
+}
