@@ -1,0 +1,58 @@
+/* ============================================================
+   1. BASE — reset, variáveis, elementos globais
+   ============================================================ */
+
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --color-dark:         #1A1A1A;
+    --color-darker:       #000000;
+    --color-brown:        #3E2723;
+    --color-card:         #2C2C2C;
+    --color-accent:       #D84315;
+    --color-accent-hover: #BF360C;
+    --color-white:        #FFFFFF;
+    --color-gray-300:     #D1D5DB;
+    --color-gray-400:     #9CA3AF;
+
+    /* Tokens de transição centralizados — mude aqui, aplica em tudo */
+    --transition-fast:    all 0.2s ease;
+    --transition-default: all 0.3s ease;
+
+    /* Tokens de borda */
+    --border-accent-20: rgba(216, 67, 21, 0.2);
+    --border-accent-30: rgba(216, 67, 21, 0.3);
+
+    --max-width: 1280px;
+}
+
+html {
+    scroll-behavior: smooth;
+    font-size: 16px;
+    /* Evita salto de layout ao abrir/fechar menus que alteram overflow */
+    scrollbar-gutter: stable;
+}
+
+body {
+    font-family: 'Segoe UI', Oxygen, Ubuntu, Cantarell, sans-serif;
+    background-color: var(--color-dark);
+    color: var(--color-white);
+    line-height: 1.6;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+button {
+    border: none;
+    background: none;
+    cursor: pointer;
+    font-family: inherit;
+    transition: var(--transition-default);
+}

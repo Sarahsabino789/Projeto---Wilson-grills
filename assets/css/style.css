@@ -4,85 +4,6 @@
    ============================================================ */
 
 
-/* ============================================================
-   1. BASE — reset, variáveis, elementos globais
-   ============================================================ */
-
-*,
-*::before,
-*::after {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-:root {
-    --color-dark:         #1A1A1A;
-    --color-darker:       #000000;
-    --color-brown:        #3E2723;
-    --color-card:         #2C2C2C;
-    --color-accent:       #D84315;
-    --color-accent-hover: #BF360C;
-    --color-white:        #FFFFFF;
-    --color-gray-300:     #D1D5DB;
-    --color-gray-400:     #9CA3AF;
-
-    /* Tokens de transição centralizados — mude aqui, aplica em tudo */
-    --transition-fast:    all 0.2s ease;
-    --transition-default: all 0.3s ease;
-
-    /* Tokens de borda */
-    --border-accent-20: rgba(216, 67, 21, 0.2);
-    --border-accent-30: rgba(216, 67, 21, 0.3);
-
-    --max-width: 1280px;
-}
-
-html {
-    scroll-behavior: smooth;
-    font-size: 16px;
-    /* Evita salto de layout ao abrir/fechar menus que alteram overflow */
-    scrollbar-gutter: stable;
-}
-
-body {
-    /*
-        CORREÇÃO: -apple-system e BlinkMacSystemFont eram redundantes no mesmo stack.
-        Removidos; Segoe UI cobre Windows, o restante cobre Linux e fallback.
-        Adicionado font-display implícito via stack de sistema — sem fonte externa,
-        sem risco de FOUT ou bloqueio de renderização.
-    */
-    font-family: 'Segoe UI', Oxygen, Ubuntu, Cantarell, sans-serif;
-    background-color: var(--color-dark);
-    color: var(--color-white);
-    line-height: 1.6;
-    overflow-x: hidden;
-    /*
-        CORREÇÃO: -webkit-font-smoothing melhora leitura em fundo escuro no macOS.
-        Sem isso, texto em fundos escuros pode parecer grosso/borrado no Safari.
-    */
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-}
-
-img {
-    max-width: 100%;
-    /*
-        CORREÇÃO: height: auto junto de max-width evita que imagens com width/height
-        explícitos no HTML fiquem distorcidas em telas menores.
-    */
-    width: 100vw;
-    height: 80vh;
-    display: block;
-}
-
-button {
-    border: none;
-    background: none;
-    cursor: pointer;
-    font-family: inherit;
-    transition: var(--transition-default);
-}
 
 /*
     ADIÇÃO: foco visível global — obrigatório para acessibilidade (WCAG 2.4.7).
@@ -123,45 +44,84 @@ button {
   color: #FFFFFF;      
 }
 
+/* ============================================================
+           HEADER
+        ============================================================ */
+
 header {
     background: var(--color-darker);
     position: relative;
-    
+    height: 12vh;
 }
 
 header::after {
     content: "";
-    background: linear-gradient(to bottom, #000000 0 50%,  #d84215af 50% 100%);
+    background: linear-gradient(to bottom, #00000000 0 50%,  #d84215af 50% 100%);
     position: absolute;
-    border:  1.5px solid var(--color-accent);
-    border-top: 1.5px solid black;
     bottom: -30%;
-    left: 32.5%;
+    left: 37%;
     height: 7vh;
     width: 28vw;
-    border-radius: 1rem;
+    border-radius: 0 0 2rem 2rem;
 }
-.nav-link {
-    color: white;
-    transition: var(--transition-default);
+
+header img {
+    height: 21vh;
+    width: 25vw;
+    transform: translateY(-7vh);
+    image-rendering:inherit;
 }
+
+nav {
+    position: relative;
+        z-index: 1;
+}
+
+
+.text-white {
+    transition: color var(--transition-default)!important;
+}
+.text-white:hover {
+    color: var(--color-gray-300) !important;
+}
+
+nav ul li a::after {
+    content: "";
+    display: block;
+    width: 0;
+    height: 2px;
+    background: var(--color-accent);
+    transition: width .3s ease;
+}
+
+nav ul li a:hover::after {
+    width: 100%;
+}
+
 .btn-orange {
     color: white;
     background-color: var(--color-accent);
+    transition: var(--transition-default);
 }
 
 .btn-orange:hover {
     background-color: var(--color-accent-hover);
 }
 
+ header .btn-orange {
+    height: 6vh;
+ }
 
+ header div a:first-child, header div nav, header div a:last-child {
+    transform: translateX(-2.5vw);
+ } 
 
-/*Section - home */
-
+ /* ============================================================
+           HOME
+        ============================================================ */
 section#home {
-    background-image: linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.75)), url('https://images.unsplash.com/photo-1627947063935-55577ec3c2e1?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1920');
-    width: 100vw;
-    height: 80vh;
+     width: 100vw;
+    height: 90vh;
    background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -178,8 +138,11 @@ section#home  h1 {
 }
 
 section#home div:first-child {
-    transform: translate(-4vw, -.5vh);
+    align-self: center;
 }
+
+
+
 
 section#home div:nth-of-type(2) p {
     font-size: 1.5rem;
@@ -191,12 +154,26 @@ section#home div:nth-of-type(2) p {
     border: 2px solid var(--color-accent);
     color: white;
     margin-left: 2rem;
+   transition: background-color .5s ease-in-out, transform .5s ease-in-out;
+
 }
 
 .btn-orange-oco:hover {
      border: 2px solid var(--color-accent-hover);
      background-color: var(--color-accent-hover);
     color: white;
+     transform: translateY(-2px);  
+}
+
+section#home .btn-orange {
+    color: white;
+    background-color: var(--color-accent);
+    transition: background-color .5s ease-in-out, transform .5s ease-in-out;
+}
+
+section#home .btn-orange:hover {
+    background-color: var(--color-accent-hover);
+    transform: translateY(-2px);
 }
 
 .aumenta {
@@ -208,89 +185,325 @@ section#home div:nth-of-type(2) p {
     font-size: 1.1rem;
 }
 
-/*section-serviço*/
+     .custom-card {
+            background-color: var(--color-card);
+            border: 1px solid var(--border-accent-20) !important;
+            border-radius: 12px;
+            transition: var(--transition-default);
+        }
+        .custom-card:hover {
+            border-color: var(--border-accent-30) !important;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 30px rgba(216, 67, 21, 0.12);
+        }
 
-/* Limitação e Fundo */
-.custom-container {
-  max-width: var(--max-width);
+        
+ 
+        /* ============================================================
+           COMO FUNCIONA — ícone circular
+           Bootstrap não tem círculo com border-accent
+        ============================================================ */
+        .step-icon-wrap {
+            width: 60px; height: 60px;
+            background-color: rgba(216,67,21,0.15);
+            border: 1px solid var(--border-accent-30);
+            border-radius: 50%;
+            color: var(--color-accent);
+            transition: var(--transition-default);
+        }
+        .custom-card:hover .step-icon-wrap {
+            background-color: rgba(216,67,21,0.25);
+        }
+ 
+        /* Serviço Flexível — setas nos itens da lista */
+        #container-flexivel li {
+            position: relative;
+            padding-left: 22px;
+            color: var(--color-gray-400);
+            font-size: 0.97rem;
+        }
+        #container-flexivel li::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: var(--color-accent);
+            font-weight: 700;
+        }
+ 
+        /* ============================================================
+           EQUIPE — card com imagem e hover
+        ============================================================ */
+        .team-card {
+            background-color: var(--color-card);
+            border: 1px solid var(--border-accent-20);
+            border-radius: 14px;
+            overflow: hidden;
+            transition: var(--transition-default);
+        }
+        .team-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 34px rgba(0,0,0,0.4);
+            border-color: var(--border-accent-30);
+        }
+        .team-card img {
+            width: 100%; height: 220px;
+            object-fit: cover;
+            filter: grayscale(20%);
+            transition: var(--transition-default);
+        }
+        .team-card:hover img { filter: grayscale(0%); }
+ 
+        /* ============================================================
+           PORTFOLIO / BUFFETS
+           Bootstrap row/col cuida do grid; CSS só para o card visual
+        ============================================================ */
+        .buffet-card {
+            position: relative;
+            display: block;
+            border-radius: 14px;
+            overflow: hidden;
+            border: 1px solid var(--border-accent-20);
+            text-decoration: none;
+            transition: var(--transition-default);
+        }
+        .buffet-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 36px rgba(0,0,0,0.5);
+            border-color: var(--border-accent-30);
+        }
+        .buffet-card img {
+            width: 100%; height: 220px;
+            object-fit: cover;
+            display: block;
+            transition: var(--transition-default);
+        }
+        .buffet-card:hover img { transform: scale(1.04); }
+        .buffet-card-overlay {
+            position: absolute;
+            bottom: 0; left: 0; right: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.88) 0%, transparent 100%);
+            padding: 24px 18px 18px;
+        }
+        .buffet-card-overlay h3 {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--color-white);
+            margin-bottom: 4px;
+        }
+        .buffet-card-overlay p {
+            color: var(--color-gray-400);
+            font-size: 0.82rem;
+            margin-bottom: 8px;
+        }
+        .buffet-card-overlay span {
+            color: var(--color-accent);
+            font-size: 0.82rem;
+            font-weight: 600;
+        }
+ 
+        /* Stat card — hover */
+        .stat-card {
+            background-color: var(--color-card);
+            border: 1px solid var(--border-accent-20);
+            border-radius: 12px;
+            transition: var(--transition-default);
+        }
+        .stat-card:hover {
+            transform: translateY(-3px);
+            border-color: var(--border-accent-30);
+        }
+        .stat-card strong {
+            font-size: 2.2rem;
+            font-weight: 900;
+            color: var(--color-accent);
+            line-height: 1;
+        }
+ 
+        /* ============================================================
+           DEPOIMENTOS
+        ============================================================ */
+        .depoimento-card {
+            background-color: var(--color-card);
+            border: 1px solid var(--border-accent-20);
+            border-radius: 14px;
+            transition: var(--transition-default);
+            height: 100%;
+        }
+        .depoimento-card:hover {
+            transform: translateY(-4px);
+            border-color: var(--border-accent-30);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.35);
+        }
+        .depoimento-stars { color: var(--color-accent); letter-spacing: 2px; }
+        .depoimento-text {
+            color: var(--color-gray-300);
+            font-size: 0.95rem;
+            line-height: 1.7;
+            flex: 1;
+        }
+        .depoimento-text::before { content: '"'; }
+        .depoimento-text::after  { content: '"'; }
+        .depoimento-author {
+            border-top: 1px solid var(--border-accent-20);
+        }
+        .depoimento-avatar {
+            width: 44px; height: 44px;
+            border-radius: 50%;
+            background-color: var(--color-accent);
+            flex-shrink: 0;
+        }
+        .depoimento-name  { font-weight: 700; font-size: 0.95rem; color: var(--color-white); margin: 0; }
+        .depoimento-event { font-size: 0.8rem; color: var(--color-accent); margin: 0; }
+ 
+        /* ============================================================
+           ORÇAMENTO — inputs com tema escuro
+           Bootstrap .form-control não tem bg escuro por padrão
+        ============================================================ */
+        .form-control-dark,
+        .form-select-dark {
+            background-color: var(--color-dark);
+            border: 1px solid rgba(255,255,255,0.12);
+            border-radius: 10px;
+            color: var(--color-white);
+            font-size: 0.95rem;
+            transition: var(--transition-fast);
+        }
+        .form-control-dark::placeholder { color: var(--color-gray-400); }
+        .form-control-dark:focus,
+        .form-select-dark:focus {
+            background-color: var(--color-dark);
+            border-color: var(--color-accent);
+            box-shadow: 0 0 0 3px rgba(216,67,21,0.15);
+            color: var(--color-white);
+        }
+        .form-select-dark option { background-color: var(--color-dark); }
+        .form-label-custom {
+            color: var(--color-accent);
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+        .field-hint { color: var(--color-gray-400); font-size: 0.75rem; }
+        .btn-submit-custom {
+            background-color: var(--color-accent);
+            color: var(--color-white);
+            font-weight: 700;
+            font-size: 1.05rem;
+            border: none;
+            border-radius: 10px;
+            transition: var(--transition-fast);
+        }
+        .btn-submit-custom:hover {
+            background-color: var(--color-accent-hover);
+            color: var(--color-white);
+            transform: translateY(-1px);
+        }
+ 
+        /* Contact cards */
+        .contact-card {
+            background-color: var(--color-dark);
+            border: 1px solid var(--border-accent-20);
+            border-radius: 10px;
+            text-decoration: none;
+            transition: var(--transition-fast);
+        }
+        .contact-card:hover { border-color: var(--border-accent-30); }
+        .contact-card .cc-label { color: var(--color-gray-400); font-size: 0.75rem; margin: 0; }
+        .contact-card .cc-value { color: var(--color-white); font-weight: 600; font-size: 0.95rem; margin: 0; }
+ 
+        /* ============================================================
+           FOOTER
+           Bootstrap .row cuida do grid; CSS só para cores e bordas
+        ============================================================ */
+        .footer-link {
+            color: var(--color-gray-400);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: var(--transition-fast);
+        }
+        .footer-link:hover { color: var(--color-accent); }
+        .footer-border-top { border-top: 1px solid var(--border-accent-20); }
+
+         /* ── Checkbox grupo — só o que Bootstrap não cobre ───────── */
+.form-check-group-dark {
+    background-color: var(--color-dark);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    transition: var(--transition-fast);
 }
 
-.custom-bg-dark {
-  background-color: var(--color-dark);
+.form-check-group-dark:focus-within {
+    border-color: var(--color-accent);
+    box-shadow: 0 0 0 3px var(--border-accent-20);
 }
 
-.custom-text-gray-400 {
-  color: var(--color-gray-400);
-}
-
-/* Base de todos os Blocos de Card */
-.custom-card {
-  background-color: var(--color-card);
-  border: 1px solid var(--border-accent-20);
-  border-radius: 16px;
-  background-clip: padding-box;
-  transition: var(--transition-default);
-}
-
-.custom-card:hover {
-  border-color: var(--color-accent);
-}
-
-/* Força os textos dentro dos cards a respeitarem um limite proporcional */
-.custom-card p {
-  max-width: 650px;
-}
-
-/* Ícones Circulares (Exclusivo para a primeira linha de 3 cards) */
-.row:first-of-type .custom-card > div:first-of-type {
-  width: 60px;
-  height: 60px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 50%;
-  background-color: rgba(216, 67, 21, 0.1);
-  color: var(--color-accent);
-  margin-bottom: 1.25rem;
-}
-
-/* Fundo do Bloco Flexível (Sutil gradiente igual ao da imagem) */
-#container-flexivel {
- background: linear-gradient(to left, var(--color-card)  40%, var(--border-accent-20) 100%);
-}
-
-/* ==========================================================================
-   Estilização Customizada da Seção Equipe (Cards)
-   ========================================================================== */
-
-/* Garante que o card ocupe 100% da altura da coluna e aplique o fundo escuro */
-.custom-card {
+/* ── Checkbox input ─────────────────────────────────────── */
+.form-check-input-dark {
     background-color: var(--color-card);
-    border: 1px solid var(--border-accent-20);
-    border-radius: 16px;
-    background-clip: padding-box;
-    transition: var(--transition-default);
+    border-color: rgba(255, 255, 255, 0.25);
+    cursor: pointer;
+    transition: var(--transition-fast);
 }
 
-/* Efeito Hover: Acende a borda em laranja ao passar o mouse */
-.custom-card:hover {
+.form-check-input-dark:checked {
+    background-color: var(--color-accent);
     border-color: var(--color-accent);
 }
 
-/* Ajuste das imagens dentro dos cards da equipe para cobrir o espaço mantendo a proporção */
-.custom-card img {
-    width: 100%;
-    aspect-ratio: 1 / 1;
-    object-fit: cover;
-    border-radius: 12px; /* Deixa as bordas da foto ligeiramente arredondadas como na imagem */
+.form-check-input-dark:focus-visible {
+    border-color: var(--color-accent);
+    box-shadow: 0 0 0 3px var(--border-accent-20);
+    outline: none;
 }
 
-/* Força os textos descritivos dentro dos cards a respeitarem uma cor legível */
-.custom-card p.custom-text-gray-400 {
+/* ── Checkbox label ─────────────────────────────────────── */
+.form-check-dark .form-check-label {
     color: var(--color-gray-400);
+    cursor: pointer;
+    transition: var(--transition-fast);
 }
 
-/* Garante que os títulos h3 dentro dos cards fiquem brancos como na foto */
-.custom-card h3 {
-    color: #ffffff;
+.form-check:has(.form-check-input-dark:checked) .form-check-label {
+    color: var(--color-white);
 }
+ 
+        /* ============================================================
+           WHATSAPP FAB
+        ============================================================ */
+        .fab-whatsapp {
+            position: fixed;
+            bottom: 28px; right: 6vw;
+            z-index: 999;
+            width: 56px; height: 56px;
+            background-color: #25D366;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 20px rgba(37,211,102,0.4);
+            text-decoration: none;
+            transition: var(--transition-fast);
+        }
+        .fab-whatsapp:hover { transform: scale(1.1); }
+        .fab-whatsapp svg { width: 28px; height: 28px; fill: white; }
+
+          /* ============================================================
+           instagram FAB
+        ============================================================ */
+
+          .fab-instagram {
+            position: fixed;
+            bottom: 28px; right: 1vw;
+            z-index: 999;
+            width: 56px; height: 56px;
+            background-color: #E1306C;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 20px #E1306C66;
+            text-decoration: none;
+            transition: var(--transition-fast);
+        }
+        .fab-instagram:hover { transform: scale(1.1); }
+        .fab-instagram svg { width: 28px; height: 28px; fill: white; }
+
+    

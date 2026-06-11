@@ -1,0 +1,250 @@
+   /* ============================================================
+   RESPONSIVIDADE 
+============================================================ */
+ 
+/* ── TABLET (≤ 991px) ───────────────────────────────────────
+   Nav ainda visível mas comprimida; logo menor; botão mantido
+──────────────────────────────────────────────────────────── */
+@media (max-width: 991.98px) {
+ 
+    /* Header: reduz altura */
+    header {
+        height: auto;
+        min-height: 10vh;
+    }
+ 
+    /* Barra decorativa: centraliza e afina */
+    header::after {
+        left: 50%;
+        transform: translateX(-50%);
+        width: 40vw;
+        height: 6vh;
+        bottom: -28%;
+    }
+ 
+    /* Logo menor */
+    header img {
+        height: 16vh;
+        width: 20vw;
+        transform: translateY(-5vh);
+    }
+ 
+    /* Botão CTA um pouco menor */
+    header .btn-orange {
+        height: 5vh;
+        min-height: 40px;
+        font-size: 0.9rem;
+        padding: 0 16px;
+        white-space: nowrap;
+    }
+ 
+    /* Hero: botões ligeiramente menores */
+    .aumenta {
+        height: 9vh;
+        width: 30vw;
+        line-height: 1;
+        font-size: 1rem;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+    }
+ 
+    /* Parágrafo do hero */
+    section#home div:nth-of-type(2) p {
+        font-size: 1.2rem;
+    }
+}
+ 
+/* ── MOBILE (≤ 767px) ───────────────────────────────────────
+   Nav desktop some; hambúrguer aparece; logo sem translateY
+──────────────────────────────────────────────────────────── */
+@media (max-width: 767.98px) {
+ 
+    /* Header vira flex coluna */
+    header {
+        height: auto;
+        min-height: 0;
+    }
+ 
+    /* Remove barra decorativa — não cabe em mobile */
+    header::after {
+        display: none;
+    }
+ 
+    /* Div interna: logo + hambúrguer lado a lado, sem justify-around */
+    header > div {
+        justify-content: space-between !important;
+        padding: 10px 16px !important;
+        flex-wrap: wrap;
+        gap: 8px;
+    }
+ 
+    /* Logo: reseta transform, tamanho fixo */
+    header img {
+        height: 52px;
+        width: auto;
+        max-width: 130px;
+        transform: none;
+    }
+ 
+    /* Botão CTA desktop: esconde */
+    header > div > a.btn-orange {
+        display: none !important;
+    }
+ 
+    /* Nav mobile: esconde */
+    .nav-mobile {
+        display: none !important;
+    }
+ 
+    /* Hambúrguer: mostra (Bootstrap d-md-none) */
+    .nav-mobile-toggle {
+        display: flex !important;
+    }
+ 
+    /* Menu mobile (quando aberto via classe .aberto) */
+    .nav-mobile-menu {
+        display: none;
+        width: 100%;
+        background-color: rgba(0, 0, 0, 0.97);
+        border-top: 1px solid var(--border-accent-20);
+        padding: 8px 16px 16px;
+        order: 3; /* aparece abaixo da linha logo + toggle */
+    }
+    .nav-mobile-menu.aberto {
+        display: block;
+    }
+    .nav-mobile-menu .nav-link {
+        display: block;
+        padding: 10px 0;
+        border-bottom: 1px solid var(--border-accent-20);
+        font-size: 0.95rem;
+    }
+    .nav-mobile-menu .nav-link:last-child {
+        border-bottom: none;
+    }
+ 
+    /* ── Hero mobile ─────────────────────────────────────── */
+ 
+    /* Remove translate do badge */
+    section#home div:first-child {
+        transform: none;
+    }
+ 
+    /* Altura flexível em vez de 90vh fixo */
+    section#home {
+        height: auto;
+        min-height: 88vh;
+        padding: 40px 16px 48px;
+    }
+ 
+    /* Título menor */
+    section#home h1 {
+        font-size: clamp(2rem, 8vw, 3.2rem);
+    }
+ 
+    /* Parágrafo: quebra de linha manual some, texto menor */
+    section#home div:nth-of-type(2) p {
+        font-size: 1rem;
+    }
+    section#home div:nth-of-type(2) p br {
+        display: none;
+    }
+ 
+    /* Botões: empilhados, largura total */
+    section#home div:nth-of-type(2) > div {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 12px;
+        width: 100%;
+    }
+ 
+    .aumenta {
+        height: auto;
+        min-height: 52px;
+        width: 100%;
+        max-width: 320px;
+        line-height: 1;
+        font-size: 1rem;
+        padding: 14px 20px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+ 
+    /* Remove margin-left do botão outline */
+    .btn-orange-oco {
+        margin-left: 0 !important;
+    }
+ 
+    /* Esconde <br> que só serve no desktop */
+    .nquebra-mobile {
+        display: none;
+    }
+}
+ 
+/* ── MOBILE PEQUENO (≤ 480px) ───────────────────────────────
+   Ajustes finos para telas muito estreitas
+──────────────────────────────────────────────────────────── */
+@media (max-width: 480px) {
+ 
+    header img {
+        height: 44px;
+        max-width: 110px;
+    }
+ 
+    section#home h1 {
+        font-size: clamp(1.7rem, 9vw, 2.5rem);
+    }
+ 
+    section#home div:nth-of-type(2) p {
+        font-size: 0.92rem;
+    }
+ 
+    .aumenta {
+        max-width: 100%;
+        font-size: 0.95rem;
+        padding: 13px 16px;
+    }
+
+     .stat-card strong { 
+        font-size: 1.4rem; 
+    }
+    .stat-card p {
+         font-size: 0.75rem; 
+    }
+}
+ 
+
+/* ============================================================
+           RESPONSIVIDADE - SUBPAGES
+        ============================================================ */
+
+        /* Desktop e tablet: grid visível, carrossel oculto */
+        @media (min-width: 768px) {
+            .gallery-desktop { display: block; }
+            .gallery-mobile  { display: none !important; }
+        }
+
+        /* Mobile: carrossel visível, grid oculto */
+        @media (max-width: 767.98px) {
+            .gallery-desktop { display: none !important; }
+            .gallery-mobile  { display: block; padding: 32px 0; }
+
+            .gallery-hero { padding: 56px 20px 48px; }
+
+            .cta-section { padding: 56px 20px; }
+
+            /* Botões do CTA empilhados */
+            .cta-btns {
+                flex-direction: column;
+                align-items: center;
+            }
+            .cta-btns .btn-orange,
+            .cta-btns .btn-orange-oco {
+                width: 100%;
+                max-width: 360px;
+                text-align: center;
+            }
+        }
