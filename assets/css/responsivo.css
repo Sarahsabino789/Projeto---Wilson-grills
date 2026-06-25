@@ -246,6 +246,9 @@
 
   /* --- Galeria subpages --- */
   section#galeria p { font-size: 1rem !important; }
+
+
+ 
 }
 
 /* ============================================================
@@ -470,8 +473,15 @@
 
   #servico .row.g-4.justify-content-center > .col-4 p { font-size: 0.68rem; }
 
-  #servico h3 { font-size: 0.8rem !important; }
+  #servico .tres-cards h3 {
+     font-size: 0.8rem !important; 
+  }
 
+  #container-flexivel h3 {
+    font-size: 1.5rem !important; 
+    transform: translateY(2vh);
+  }
+ 
   .diminui { font-size: 1rem !important; }
 
   /* --- Serviço Totalmente Flexível --- */

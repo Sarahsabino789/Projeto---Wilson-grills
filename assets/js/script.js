@@ -114,18 +114,51 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   }
 });
-/*SUBPAGE LINK CARROSSEL RESP*/
+
+/* SUBPAGE LINK CARROSSEL RESP */
 document.querySelectorAll('.filter-scroll').forEach((nav) => {
   const track = nav.querySelector('.filter-scroll__track');
   const prevBtn = nav.querySelector('.filter-scroll__arrow--prev');
   const nextBtn = nav.querySelector('.filter-scroll__arrow--next');
-  const step = 140; // px por clique — ajuste se quiser rolar mais/menos
+  const items = Array.from(track.querySelectorAll('li'));
 
-  prevBtn.addEventListener('click', () => {
-    track.scrollBy({ left: -step, behavior: 'smooth' });
+  // Marca o link ativo com base na URL atual
+  const currentPath = window.location.pathname.split('/').pop();
+  track.querySelectorAll('.filter-scroll__item').forEach((item) => {
+    const itemPath = item.getAttribute('href').split('/').pop();
+    if (itemPath === currentPath) {
+      item.setAttribute('aria-current', 'page');
+    } else {
+      item.removeAttribute('aria-current');
+    }
   });
 
+  // Scroll item a item
   nextBtn.addEventListener('click', () => {
-    track.scrollBy({ left: step, behavior: 'smooth' });
+    const firstItem = items[0];
+    const itemWidth = firstItem.getBoundingClientRect().width;
+    const gap = parseFloat(getComputedStyle(track).gap) || 8;
+    const step = itemWidth + gap;
+
+    const maxScroll = track.scrollWidth - track.clientWidth;
+
+    if (track.scrollLeft >= maxScroll - 1) {
+      track.scrollTo({ left: 0, behavior: 'smooth' });
+    } else {
+      track.scrollBy({ left: step, behavior: 'smooth' });
+    }
+  });
+
+  prevBtn.addEventListener('click', () => {
+    const firstItem = items[0];
+    const itemWidth = firstItem.getBoundingClientRect().width;
+    const gap = parseFloat(getComputedStyle(track).gap) || 8;
+    const step = itemWidth + gap;
+
+    if (track.scrollLeft <= 1) {
+      track.scrollTo({ left: track.scrollWidth, behavior: 'smooth' });
+    } else {
+      track.scrollBy({ left: -step, behavior: 'smooth' });
+    }
   });
 });
