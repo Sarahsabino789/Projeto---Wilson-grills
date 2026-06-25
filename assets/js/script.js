@@ -1,7 +1,10 @@
- /*Atualiza o ano atuomáticamente no rodapé*/ 
- document.getElementById('ano-atual').textContent = new Date().getFullYear();
+ /* Atualiza o ano automaticamente no rodapé — só roda se o elemento existir */
+const anoAtualEl = document.getElementById('ano-atual');
+if (anoAtualEl) {
+  anoAtualEl.textContent = new Date().getFullYear();
+}
 
- function enviarWpp() {
+function enviarWpp() {
     const hora        = obterSaudacao();
     const nome        = document.getElementById('nome').value.trim();
     const regiao      = document.getElementById('regiao-evento').value;
@@ -31,3 +34,98 @@ function obterSaudacao() {
     if (hora >= 12 && hora < 18) return 'Boa tarde';
     return 'Boa noite';
 }
+
+/* ============================================================
+   PORTFÓLIO — pausa o autoplay quando o usuário foca um card
+   por teclado (acessibilidade)
+============================================================ */
+document.addEventListener('DOMContentLoaded', () => {
+  const carouselEl = document.getElementById('carouselBuffets');
+  if (!carouselEl) return;
+
+  const carousel = bootstrap.Carousel.getOrCreateInstance(carouselEl);
+  const focusableItems = carouselEl.querySelectorAll('.buffet-card');
+
+  focusableItems.forEach(item => {
+    item.addEventListener('focus', () => carousel.pause());
+    item.addEventListener('blur', () => carousel.cycle());
+  });
+});
+
+/* SUBPAGINAS - LINK ATIVO */
+document.addEventListener('DOMContentLoaded', () => {
+  const navLinks = document.querySelectorAll('.filter-bar__item');
+  const currentPage = window.location.pathname.split('/').pop();
+
+  navLinks.forEach(link => {
+    const linkPage = link.getAttribute('href').split('/').pop();
+
+    if (linkPage === currentPage) {
+      link.classList.add('is-active');
+      link.setAttribute('aria-current', 'page');
+    } else {
+      link.classList.remove('is-active');
+      link.removeAttribute('aria-current');
+    }
+  });
+});
+
+/* input data - só consegue digitar dias/meses/anos que é atual ou futuro */
+
+document.addEventListener('DOMContentLoaded', function () {
+  const inputData = document.getElementById('data');
+  const botaoSubmit = document.querySelector('button[type="submit"].btn-submit-custom');
+  const form = botaoSubmit ? botaoSubmit.closest('form') : null;
+
+  // Pega a data de hoje no formato YYYY-MM-DD (formato interno do input type="date")
+  function getHojeFormatado() {
+    const hoje = new Date();
+    const ano = hoje.getFullYear();
+    const mes = String(hoje.getMonth() + 1).padStart(2, '0');
+    const dia = String(hoje.getDate()).padStart(2, '0');
+    return `${ano}-${mes}-${dia}`;
+  }
+
+  const hojeFormatado = getHojeFormatado();
+
+  // Impede o calendário de mostrar/aceitar datas passadas
+  inputData.setAttribute('min', hojeFormatado);
+
+  // Validação ao alterar o campo
+  inputData.addEventListener('change', function () {
+    if (inputData.value && inputData.value < hojeFormatado) {
+      alert('A data não pode ser menor que a data atual.');
+      inputData.value = '';
+    }
+  });
+
+  // Validação ao enviar o formulário (garante que não passe nenhuma data inválida)
+  if (form) {
+    form.addEventListener('submit', function (event) {
+      if (!inputData.value) {
+        event.preventDefault();
+        alert('Por favor, selecione uma data.');
+        return;
+      }
+      if (inputData.value < hojeFormatado) {
+        event.preventDefault();
+        alert('A data não pode ser menor que a data atual.');
+      }
+    });
+  }
+});
+/*SUBPAGE LINK CARROSSEL RESP*/
+document.querySelectorAll('.filter-scroll').forEach((nav) => {
+  const track = nav.querySelector('.filter-scroll__track');
+  const prevBtn = nav.querySelector('.filter-scroll__arrow--prev');
+  const nextBtn = nav.querySelector('.filter-scroll__arrow--next');
+  const step = 140; // px por clique — ajuste se quiser rolar mais/menos
+
+  prevBtn.addEventListener('click', () => {
+    track.scrollBy({ left: -step, behavior: 'smooth' });
+  });
+
+  nextBtn.addEventListener('click', () => {
+    track.scrollBy({ left: step, behavior: 'smooth' });
+  });
+});

@@ -4,6 +4,7 @@
    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Wilson's Grills – Buffet Churrasco. Carnes nobres grelhadas na brasa para eventos  inesquecíveis.">
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
     <link rel="stylesheet" href="../assets/css/global.css">
     <link rel="stylesheet" href="../assets/css/subpages.css">
     <link rel="stylesheet" href="../assets/css/responsivo.css">
@@ -12,279 +13,267 @@
 </head>
 <body>
     <!-- ============================================================
-     SKIP LINK
-============================================================ -->
-<a href="#conteudo-principal"
-   class="visually-hidden-focusable position-fixed top-0 start-0 bg-accent text-white p-2 rounded"
-   style="z-index:9999; background:var(--color-accent);">
-    Pular para o conteúdo principal
-</a>
-
-<!-- ============================================================
-     HEADER
-============================================================ -->
-<header role="banner">
-    <div class="container d-flex align-items-start justify-content-between py-2">
-
-        <!-- Logo -->
-        <a href="index.html"
-           class="logo-wrap"
-           aria-label="Wilson's Grills – Catering e Buffets, voltar para a página inicial">
-            <img src="../assets/images/logomarca.webp" alt="Logomarca Wilson's Grills Catering e Buffets"
-             loading="eager">
-        </a>
-
-        <!-- Botão voltar -->
-        <a href="index.html#portfolio"
-           class="btn-voltar"
-           aria-label="Voltar para a página de portfólio">
-            Voltar
-        </a>
-
+       SKIP LINK — acessibilidade teclado/leitor de tela
+  ============================================================ -->
+  <a
+    href="#conteudo-principal"
+    class="visually-hidden-focusable acessible-style sr-only"
+   
+  >
+    Ir para o conteúdo principal
+  </a>
+ 
+  <!-- ============================================================
+       HERO
+  ============================================================ -->
+  <section class="hero" aria-labelledby="hero-titulo">
+    <div class="container">
+      <div class="row">
+        <div class="col-12 col-lg-8">
+ 
+          <p class="badge-pill mb-3" aria-label="Categoria:  Tradição Caipira de Verdade">
+            <span aria-hidden="true">🌽</span>
+            Para o Dia Mais Especial
+          </p>
+ 
+          <h1 id="hero-titulo" class="hero__title mb-3">
+            Buffet <span class="text-accent">Festa Junina</span>
+          </h1>
+ 
+          <p class="hero__description mb-4">
+           Milho assado, pamonha, canjica, quentão… tem coisa melhor do que uma festa junina com comida boa de verdade? A gente traz o sabor autêntico do arraiá para dentro do seu evento — com aquele jeito aconchegante de cozinha caipira que todo mundo ama!
+          </p>
+ 
+          <a href="#cta" class="btn-accent">Solicitar Orçamento</a>
+ 
+        </div>
+      </div>
     </div>
-</header>
-
-<!-- ============================================================
-     CONTEÚDO PRINCIPAL
-============================================================ -->
-<main id="conteudo-principal">
-
-    <!-- Hero da galeria -->
-    <section aria-labelledby="titulo-buffet" class="gallery-hero">
-        <div class="container">
-            <h1 id="titulo-buffet">
-                Buffet Festa <span class="corlaranja">Junina</span>
-            </h1>
-            <p>
-                Carnes nobres grelhadas na brasa, preparadas com maestria e paixão. Do
-                tradicional churrasco gaúcho aos cortes mais premium, oferecemos uma
-                experiência gastronômica completa para seu evento.
-            </p>
-            <a href="index.html#orcamento"
-               class="btn-orange"
-               role="button"
-               aria-label="Solicitar orçamento para buffet de churrasco">
-                Solicitar Orçamento
-            </a>
-        </div>
-    </section>
-
-    <!-- ── GALERIA DESKTOP (grid Bootstrap) ─────────────────── -->
-    <section aria-label="Galeria de fotos do buffet de churrasco – versão desktop"
-             class="gallery-desktop bg-dark-custom">
-        <div class="container">
-
-            <div class="row g-3">
-
-                <div class="col-4">
-                    <article class="gallery-item">
-                        <img src="https://images.unsplash.com/photo-1555939594-58d7cb561ad1?q=80&w=800"
-                             alt="Prato de churrasco premium com carnes variadas e chimichurri"
-                             loading="lazy" width="800" height="280">
-                    </article>
-                </div>
-
-                <div class="col-4">
-                    <article class="gallery-item">
-                        <img src="https://images.unsplash.com/photo-1558030006-450675393462?q=80&w=800"
-                             alt="Corte de wagyu cru sobre grelha circular, pronto para assar"
-                             loading="lazy" width="800" height="280">
-                    </article>
-                </div>
-
-                <div class="col-4">
-                    <article class="gallery-item">
-                        <img src="https://images.unsplash.com/photo-1544025162-d76694265947?q=80&w=800"
-                             alt="Carne sendo grelhada com chamas vivas e fumaça na brasa"
-                             loading="lazy" width="800" height="280">
-                    </article>
-                </div>
-
-                <div class="col-4">
-                    <article class="gallery-item">
-                        <img src="https://images.unsplash.com/photo-1529193591184-b1d58069ecdd?q=80&w=800"
-                             alt="Costela bovina inteira sendo assada lentamente sobre brasa"
-                             loading="lazy" width="800" height="280">
-                    </article>
-                </div>
-
-                <div class="col-4">
-                    <article class="gallery-item">
-                        <img src="https://images.unsplash.com/photo-1551782450-17144efb9c50?q=80&w=800"
-                             alt="Espetos de carne e frango sendo grelhados com churrasqueiro ao fundo"
-                             loading="lazy" width="800" height="280">
-                    </article>
-                </div>
-
-                <div class="col-4">
-                    <article class="gallery-item">
-                        <img src="https://images.unsplash.com/photo-1627308595229-7830a5c18037?q=80&w=800"
-                             alt="Picanha fatiada em cortes perfeitos sobre tábua de madeira"
-                             loading="lazy" width="800" height="280">
-                    </article>
-                </div>
-
-                <div class="col-4">
-                    <article class="gallery-item">
-                        <img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?q=80&w=800"
-                             alt="Mesa de buffet completo com carnes e acompanhamentos"
-                             loading="lazy" width="800" height="280">
-                    </article>
-                </div>
-
-                <div class="col-4">
-                    <article class="gallery-item">
-                        <img src="https://images.unsplash.com/photo-1603360946369-dc9bb6258143?q=80&w=800"
-                             alt="Churrasqueiro profissional virando carne na grelha com pinças"
-                             loading="lazy" width="800" height="280">
-                    </article>
-                </div>
-
-                <div class="col-4">
-                    <article class="gallery-item">
-                        <img src="https://images.unsplash.com/photo-1432139509613-5c4255815697?q=80&w=800"
-                             alt="Vista aérea de mesa com cortes de churrasco e saladas coloridas"
-                             loading="lazy" width="800" height="280">
-                    </article>
-                </div>
-
-            </div>
-        </div>
-    </section>
-
-    <!-- ── GALERIA MOBILE (carrossel deslizável) ─────────────── -->
-    <section aria-label="Galeria de fotos do buffet de churrasco – versão mobile"
-             class="gallery-mobile bg-dark-custom">
-
-        <div class="d-flex justify-content-between align-items-center px-3 mb-1">
-            <span class="carousel-hint" aria-hidden="true">Deslize para ver mais →</span>
-            <span class="carousel-counter" aria-label="1 de 9 fotos">1 / 9</span>
-        </div>
-
-        <div class="scroll-track"
-             role="list"
-             aria-label="Fotos do buffet de churrasco, deslize para navegar">
-
-            <div class="scroll-slide" role="listitem">
-                <img src="https://images.unsplash.com/photo-1555939594-58d7cb561ad1?q=80&w=600"
-                     alt="Prato de churrasco premium com carnes variadas e chimichurri"
-                     loading="lazy" width="600" height="260">
-                <p class="slide-caption">Prato de churrasco premium</p>
-            </div>
-
-            <div class="scroll-slide" role="listitem">
-                <img src="https://images.unsplash.com/photo-1558030006-450675393462?q=80&w=600"
-                     alt="Corte de wagyu cru sobre grelha circular"
-                     loading="lazy" width="600" height="260">
-                <p class="slide-caption">Wagyu na grelha</p>
-            </div>
-
-            <div class="scroll-slide" role="listitem">
-                <img src="https://images.unsplash.com/photo-1544025162-d76694265947?q=80&w=600"
-                     alt="Carne sendo grelhada com chamas vivas na brasa"
-                     loading="lazy" width="600" height="260">
-                <p class="slide-caption">Na brasa viva</p>
-            </div>
-
-            <div class="scroll-slide" role="listitem">
-                <img src="https://images.unsplash.com/photo-1529193591184-b1d58069ecdd?q=80&w=600"
-                     alt="Costela bovina inteira sendo assada lentamente"
-                     loading="lazy" width="600" height="260">
-                <p class="slide-caption">Costela assada lentamente</p>
-            </div>
-
-            <div class="scroll-slide" role="listitem">
-                <img src="https://images.unsplash.com/photo-1551782450-17144efb9c50?q=80&w=600"
-                     alt="Espetos de carne e frango sendo grelhados"
-                     loading="lazy" width="600" height="260">
-                <p class="slide-caption">Espetos na brasa</p>
-            </div>
-
-            <div class="scroll-slide" role="listitem">
-                <img src="https://images.unsplash.com/photo-1627308595229-7830a5c18037?q=80&w=600"
-                     alt="Picanha fatiada em cortes perfeitos sobre tábua de madeira"
-                     loading="lazy" width="600" height="260">
-                <p class="slide-caption">Picanha em cortes perfeitos</p>
-            </div>
-
-            <div class="scroll-slide" role="listitem">
-                <img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?q=80&w=600"
-                     alt="Mesa de buffet completo com carnes e acompanhamentos"
-                     loading="lazy" width="600" height="260">
-                <p class="slide-caption">Mesa de buffet completo</p>
-            </div>
-
-            <div class="scroll-slide" role="listitem">
-                <img src="https://images.unsplash.com/photo-1603360946369-dc9bb6258143?q=80&w=600"
-                     alt="Churrasqueiro profissional virando carne na grelha"
-                     loading="lazy" width="600" height="260">
-                <p class="slide-caption">Mestre churrasqueiro</p>
-            </div>
-
-            <div class="scroll-slide" role="listitem">
-                <img src="https://images.unsplash.com/photo-1432139509613-5c4255815697?q=80&w=600"
-                     alt="Vista aérea de mesa com cortes de churrasco e saladas coloridas"
-                     loading="lazy" width="600" height="260">
-                <p class="slide-caption">Vista do banquete</p>
-            </div>
-
-        </div>
-
-        <!-- Dots decorativos (primeiro ativo) -->
-        <div class="carousel-dots" aria-hidden="true">
-            <span class="active"></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-        </div>
-
-    </section>
-
-    <!-- ── CTA FINAL ─────────────────────────────────────────── -->
-    <section aria-labelledby="titulo-cta" class="cta-section">
-        <div class="container">
-            <h2 id="titulo-cta">
-                Gostou do que viu? <span class="corlaranja">Vamos conversar!</span>
-            </h2>
-            <p>Entre em contato e receba um orçamento personalizado para seu evento</p>
-            <div class="d-flex justify-content-center gap-3 flex-wrap cta-btns">
-                <a href="index.html#orcamento"
-                   class="btn-orange"
-                   role="button"
-                   aria-label="Solicitar orçamento gratuito para buffet de churrasco">
-                    Solicitar Orçamento Gratuito
-                </a>
-                <a href="https://wa.me/5521964859428"
-                   class="btn-orange-oco"
-                   role="button"
-                   rel="noopener noreferrer"
-                   target="_blank"
-                   aria-label="Entrar em contato via WhatsApp">
-                    WhatsApp
-                </a>
-            </div>
-        </div>
-    </section>
-
-</main>
-
-<!-- ============================================================
-     FOOTER
-============================================================ -->
-<footer role="contentinfo" class="site-footer">
-    <div class="footer-brand" aria-label="Wilson's Grills">
-        <img src="../assets/images/logomarca.webp"
-             alt="Logomarca Wilson's Grills"
-             width="120" height="32"
-             loading="lazy">
+  </section>
+ 
+  <!-- ============================================================
+       BARRA DE FILTROS / CATEGORIAS
+  ============================================================ -->
+    <nav class="filter-bar" aria-label="Categorias de buffet">
+    <div class="container-fluid px-3 px-md-4">
+      <ul class="filter-bar__track list-unstyled mb-0 d-flex justify-content-center" role="list">
+        <li><a href="churrasco.html" class="filter-bar__item"><span aria-hidden="true">🔥</span> Churrasco</a></li>
+        <li><a href="casamentos.html" class="filter-bar__item" aria-current="page"><span aria-hidden="true">💍</span> Casamento</a></li>
+        <li><a href="festas.html" class="filter-bar__item"><span aria-hidden="true">🎉</span> Festas</a></li>
+        <li><a href="feijoada.html" class="filter-bar__item">Feijoada</a></li>
+        <li><a href="festajunina.html" class="filter-bar__item"><span aria-hidden="true">🌽</span> Junina</a></li>
+        <li><a href="cafezin.html" class="filter-bar__item"><span aria-hidden="true">☕</span> Café da Manhã</a></li>
+        <li><a href="../index.html" class="filter-bar__item filter-bar__item--home"><span aria-hidden="true">🏠</span> Início</a></li>
+      </ul>
     </div>
-    <p>© <span id="ano">2026</span> Wilson Grills – Buffet Profissional. Todos os direitos reservados.</p>
-</footer>
+  </nav>
 
+   <!-- ============================================================
+     SCROLL DE CATEGORIAS (somente mobile)
+============================================================ -->
+<nav class="filter-scroll" aria-label="Categorias de buffet (mobile)">
+  <button class="filter-scroll__arrow filter-scroll__arrow--prev" type="button" aria-label="Ver anteriores">
+    <span aria-hidden="true">‹</span>
+  </button>
+
+  <ul class="filter-scroll__track list-unstyled mb-0" role="list">
+    <li><a href="churrasco.html" class="filter-scroll__item"><span aria-hidden="true">🔥</span> Churrasco</a></li>
+    <li><a href="casamentos.html" class="filter-scroll__item" aria-current="page"><span aria-hidden="true">💍</span> Casamento</a></li>
+    <li><a href="festas.html" class="filter-scroll__item"><span aria-hidden="true">🎉</span> Festas</a></li>
+    <li><a href="feijoada.html" class="filter-scroll__item">Feijoada</a></li>
+    <li><a href="festajunina.html" class="filter-scroll__item"><span aria-hidden="true">🌽</span> Junina</a></li>
+    <li><a href="cafezin.html" class="filter-scroll__item"><span aria-hidden="true">☕</span> Café da Manhã</a></li>
+    <li><a href="../index.html" class="filter-scroll__item filter-scroll__item--home"><span aria-hidden="true">🏠</span> Início</a></li>
+  </ul>
+
+  <button class="filter-scroll__arrow filter-scroll__arrow--next" type="button" aria-label="Ver próximos">
+    <span aria-hidden="true">›</span>
+  </button>
+</nav>
+ 
+  
+  <!-- ============================================================
+       CONTEÚDO PRINCIPAL — CARDÁPIO
+  ============================================================ -->
+  <main id="conteudo-principal">
+    <section class="menu-section" aria-labelledby="secao-cardapio">
+      <div class="container">
+ 
+        <h2 id="secao-cardapio" class="visually-hidden">Opções de Cardápio Para Festa Junina / Julina</h2>
+ 
+        <!-- ── Pratos Principais ── -->
+        <article class="menu-card" aria-labelledby="titulo-pratos-salgados-típicos">
+          <header class="menu-card__header">
+            <span class="menu-card__icon" aria-hidden="true">🌽</span>
+            <div>
+              <h3 id="titulo-pratos-principais" class="menu-card__title">
+                Pratos Salgados Típicos
+              </h3>
+              <p class="menu-card__subtitle mb-0">
+                Receitas tradicionais com sabor de interior
+              </p>
+            </div>
+          </header>
+ 
+          <div class="row g-3">
+            <div class="col-12 col-md-6">
+              <div class="sub-card">
+                <p class="sub-card__label" id="label-carnes">Pratos Principais</p>
+                <ul class="sub-card__list" aria-labelledby="label-Pratos-Principais">
+                  <li>Baião de dois</li>
+                  <li>Carne de sol com macaxeira</li>
+                  <li>Frango caipira assado</li>
+                  <li>Frango com quiabo</li>
+                </ul>
+              </div>
+            </div>
+            <div class="col-12 col-md-6">
+              <div class="sub-card">
+                <p class="sub-card__label" id="label-especiais">Acompanhamentos</p>
+                <ul class="sub-card__list" aria-labelledby="label-acompanhamentos">
+                  <li>Arroz com pequi</li>
+                  <li>Feijão tropeiro</li>
+                  <li>Farofa de manteiga</li>
+                  <li>Pamonha salgada</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </article>
+ 
+        <!-- ── Acompanhamentos ── -->
+      
+        <article class="menu-card" aria-labelledby="titulo-Doces-e-Quitutes">
+          <header class="menu-card__header ">
+            <span class="menu-card__icon" aria-hidden="true">🍹</span>
+            <div>
+              <h3 id="titulo-acompanhamentos" class="menu-card__title">
+               Doces e Quitutes
+              </h3>
+              <p class="menu-card__subtitle mb-0">
+                O lado doce e aconchegante do arraiá
+              </p>
+            </div>
+          </header>
+ 
+          <div class="row g-3">
+            <div class="col-12 col-md-6">
+              <div class="sub-card">
+                <p class="sub-card__label" id="label-tipicos">Doces Típicos</p>
+                <ul class="sub-card__list" aria-labelledby="label-doces-Típicos">
+                  <li>Canjica cremosa</li>
+                  <li>Pamonha doce</li>
+                  <li>Pé de moleque</li>
+                  <li>Bolo de milho</li>
+                  <li>Bolo de mandioca</li>
+                </ul>
+              </div>
+            </div>
+            <div class="col-12 col-md-6">
+              <div class="sub-card">
+                <p class="sub-card__label" id="label-milho">Milho e Pipoca</p>
+                <ul class="sub-card__list" aria-labelledby="label-Milho-e-Pipoca">
+                  <li>Suco de milho verde</li>
+                  <li>Limonada</li>
+                  <li>Água e refrigerantes</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </article>
+ 
+        <!-- ── Entradas & Couvert ── -->
+        <article class="menu-card" aria-labelledby="titulo-Bebidas-Típicas">
+          <header class="menu-card__header">
+            <span class="menu-card__icon" aria-hidden="true">🍹</span>
+            <div>
+              <h3 id="titulo-entradas" class="menu-card__title">
+                Bebidas Típicas
+              </h3>
+              <p class="menu-card__subtitle mb-0">
+                Para completar a festa com aquele esquenta
+              </p>
+            </div>
+          </header>
+ 
+          <div class="row g-3">
+            <div class="col-12 col-md-6">
+              <div class="sub-card">
+                <p class="sub-card__label" id="label-frios">Quentes</p>
+                <ul class="sub-card__list" aria-labelledby="label-Quente">
+                  <li>Quentão de vinho</li>
+                  <li>Quentão de cachaça</li>
+                  <li>Chocolate quente</li>
+                </ul>
+              </div>
+            </div>
+            <div class="col-12 col-md-6">
+              <div class="sub-card">
+                <p class="sub-card__label" id="label-quentes">Frias</p>
+                <ul class="sub-card__list" aria-labelledby="label-Frias">
+                   <li>Milho cozido na espiga</li>
+                  <li>Curau de milho</li>
+                  <li>Pipoca doce e salgada</li>
+                  <li>Mungunzá</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </article>
+ 
+        <!-- ── Nota de planejamento ── -->
+        <aside class="side-note" aria-label="Informação sobre personalização do cardápio">
+          Bebidas alcoólicas sob consulta. Verificamos as normas do local do evento.
+        </aside>
+ 
+      </div>
+    </section>
+  </main>
+ 
+  <!-- ============================================================
+       CTA FINAL
+  ============================================================ -->
+  <section id="cta" class="cta-section" aria-labelledby="cta-titulo">
+    <div class="container">
+ 
+      <h2 id="cta-titulo" class="cta-section__title mb-3">
+        O arraiá mais
+        <span class="text-accent">gostoso<br aria-hidden="true" />da vizinhança!</span>
+      </h2>
+ 
+      <p class="cta-section__description">
+        Entre em contato e vamos montar um buffet junino inesquecível para o seu evento
+      </p>
+ 
+      <div class="cta-section__actions">
+        <a href="#" class="btn-accent">Solicitar Orçamento</a>
+        <a
+          href="https://wa.me/5500000000000"
+          class="btn-outline"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Falar pelo WhatsApp (abre em nova aba)"
+        >
+          <span aria-hidden="true">💬</span> WhatsApp
+        </a>
+      </div>
+ 
+    </div>
+  </section>
+ 
+  <!-- ============================================================
+       FOOTER
+  ============================================================ -->
+  <footer class="site-footer">
+    <div class="container">
+      <p class="site-footer__brand">
+        Wilson'S Grills
+      </p>
+      <small class="site-footer__copy">
+        © 2026 Wilson'S Grills – Buffet Profissional. Todos os direitos reservados.
+      </small>
+    </div>
+  </footer>
+  <script src="../assets/js/script.js"></script>
 </body>
 </html>

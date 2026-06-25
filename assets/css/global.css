@@ -12,7 +12,7 @@
 
 :root {
     --color-dark:         #1A1A1A;
-    --color-darker:       #000000;
+    --color-darker:       hsl(0, 0%, 0%);
     --color-brown:        #3E2723;
     --color-card:         #2C2C2C;
     --color-accent:       #D84315;
@@ -29,6 +29,9 @@
     --border-accent-20: rgba(216, 67, 21, 0.2);
     --border-accent-30: rgba(216, 67, 21, 0.3);
 
+    /* Scrollbar */
+      --scrollbar-width: 8px;
+    
     --max-width: 1280px;
 }
 
@@ -56,3 +59,91 @@ button {
     font-family: inherit;
     transition: var(--transition-default);
 }
+
+/*
+    ADIÇÃO: foco visível global — obrigatório para acessibilidade (WCAG 2.4.7).
+    Remove o outline padrão feio do browser mas garante um substituto claro.
+    Sem isso, usuários de teclado ficam perdidos na página.
+*/
+
+
+/*HEADER */
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+/* Faz o link aparecer no topo da tela quando o usuário aperta 'Tab' */
+.sr-only:focus {
+  position: static;
+  width: auto;
+  height: auto;
+  padding: 10px;
+  margin: 0;
+  overflow: visible;
+  clip: auto;
+  white-space: normal;
+  background-color: #1A1A1A; 
+  color: #FFFFFF;      
+}
+
+.acessible-style {
+  position:absolute;
+      top:0; left:0;
+      padding:.5rem 1rem;
+      background:var(--color-accent);
+      color:#fff;
+      font-weight:600;
+      z-index:9999;
+      border-radius:0 0 6px 0;
+}
+
+:focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 3px;
+    border-radius: 4px;
+}
+
+
+        .corlaranja {
+    color: var(--color-accent);
+}
+
+.corgray400 {
+  color: var(--color-gray-400);
+}
+
+/* ============================================================
+       SCROLLBAR LARANJA — apenas desktop
+    ============================================================ */
+    @media (min-width: 992px) {
+      html {
+        scrollbar-color: var(--color-accent) var(--color-dark);
+        scrollbar-width: thin;
+      }
+ 
+      ::-webkit-scrollbar {
+        width: var(--scrollbar-width);
+      }
+ 
+      ::-webkit-scrollbar-track {
+        background: var(--color-dark);
+      }
+ 
+      ::-webkit-scrollbar-thumb {
+        background: var(--color-accent);
+        border-radius: 4px;
+      }
+ 
+      ::-webkit-scrollbar-thumb:hover {
+        background: var(--color-accent-hover);
+      }
+    }

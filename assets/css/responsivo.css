@@ -1,250 +1,547 @@
-   /* ============================================================
-   RESPONSIVIDADE 
-============================================================ */
- 
-/* ── TABLET (≤ 991px) ───────────────────────────────────────
-   Nav ainda visível mas comprimida; logo menor; botão mantido
-──────────────────────────────────────────────────────────── */
-@media (max-width: 991.98px) {
- 
-    /* Header: reduz altura */
-    header {
-        height: auto;
-        min-height: 10vh;
-    }
- 
-    /* Barra decorativa: centraliza e afina */
-    header::after {
-        left: 50%;
-        transform: translateX(-50%);
-        width: 40vw;
-        height: 6vh;
-        bottom: -28%;
-    }
- 
-    /* Logo menor */
-    header img {
-        height: 16vh;
-        width: 20vw;
-        transform: translateY(-5vh);
-    }
- 
-    /* Botão CTA um pouco menor */
-    header .btn-orange {
-        height: 5vh;
-        min-height: 40px;
-        font-size: 0.9rem;
-        padding: 0 16px;
-        white-space: nowrap;
-    }
- 
-    /* Hero: botões ligeiramente menores */
-    .aumenta {
-        height: 9vh;
-        width: 30vw;
-        line-height: 1;
-        font-size: 1rem;
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-    }
- 
-    /* Parágrafo do hero */
-    section#home div:nth-of-type(2) p {
-        font-size: 1.2rem;
-    }
-}
- 
-/* ── MOBILE (≤ 767px) ───────────────────────────────────────
-   Nav desktop some; hambúrguer aparece; logo sem translateY
-──────────────────────────────────────────────────────────── */
-@media (max-width: 767.98px) {
- 
-    /* Header vira flex coluna */
-    header {
-        height: auto;
-        min-height: 0;
-    }
- 
-    /* Remove barra decorativa — não cabe em mobile */
-    header::after {
-        display: none;
-    }
- 
-    /* Div interna: logo + hambúrguer lado a lado, sem justify-around */
-    header > div {
-        justify-content: space-between !important;
-        padding: 10px 16px !important;
-        flex-wrap: wrap;
-        gap: 8px;
-    }
- 
-    /* Logo: reseta transform, tamanho fixo */
-    header img {
-        height: 52px;
-        width: auto;
-        max-width: 130px;
-        transform: none;
-    }
- 
-    /* Botão CTA desktop: esconde */
-    header > div > a.btn-orange {
-        display: none !important;
-    }
- 
-    /* Nav mobile: esconde */
-    .nav-mobile {
-        display: none !important;
-    }
- 
-    /* Hambúrguer: mostra (Bootstrap d-md-none) */
-    .nav-mobile-toggle {
-        display: flex !important;
-    }
- 
-    /* Menu mobile (quando aberto via classe .aberto) */
-    .nav-mobile-menu {
-        display: none;
-        width: 100%;
-        background-color: rgba(0, 0, 0, 0.97);
-        border-top: 1px solid var(--border-accent-20);
-        padding: 8px 16px 16px;
-        order: 3; /* aparece abaixo da linha logo + toggle */
-    }
-    .nav-mobile-menu.aberto {
-        display: block;
-    }
-    .nav-mobile-menu .nav-link {
-        display: block;
-        padding: 10px 0;
-        border-bottom: 1px solid var(--border-accent-20);
-        font-size: 0.95rem;
-    }
-    .nav-mobile-menu .nav-link:last-child {
-        border-bottom: none;
-    }
- 
-    /* ── Hero mobile ─────────────────────────────────────── */
- 
-    /* Remove translate do badge */
-    section#home div:first-child {
-        transform: none;
-    }
- 
-    /* Altura flexível em vez de 90vh fixo */
-    section#home {
-        height: auto;
-        min-height: 88vh;
-        padding: 40px 16px 48px;
-    }
- 
-    /* Título menor */
-    section#home h1 {
-        font-size: clamp(2rem, 8vw, 3.2rem);
-    }
- 
-    /* Parágrafo: quebra de linha manual some, texto menor */
-    section#home div:nth-of-type(2) p {
-        font-size: 1rem;
-    }
-    section#home div:nth-of-type(2) p br {
-        display: none;
-    }
- 
-    /* Botões: empilhados, largura total */
-    section#home div:nth-of-type(2) > div {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 12px;
-        width: 100%;
-    }
- 
-    .aumenta {
-        height: auto;
-        min-height: 52px;
-        width: 100%;
-        max-width: 320px;
-        line-height: 1;
-        font-size: 1rem;
-        padding: 14px 20px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
- 
-    /* Remove margin-left do botão outline */
-    .btn-orange-oco {
-        margin-left: 0 !important;
-    }
- 
-    /* Esconde <br> que só serve no desktop */
-    .nquebra-mobile {
-        display: none;
-    }
-}
- 
-/* ── MOBILE PEQUENO (≤ 480px) ───────────────────────────────
-   Ajustes finos para telas muito estreitas
-──────────────────────────────────────────────────────────── */
-@media (max-width: 480px) {
- 
-    header img {
-        height: 44px;
-        max-width: 110px;
-    }
- 
-    section#home h1 {
-        font-size: clamp(1.7rem, 9vw, 2.5rem);
-    }
- 
-    section#home div:nth-of-type(2) p {
-        font-size: 0.92rem;
-    }
- 
-    .aumenta {
-        max-width: 100%;
-        font-size: 0.95rem;
-        padding: 13px 16px;
-    }
+/* ============================================================
+   RESPONSIVIDADE — TABLET (≤991.98px) E MOBILE (≤767.98px / ≤575.98px)
+   Aplica-se ao index.html e subpages (cafezin, casamentos, churrasco,
+   feijoada, festajunina, festas).
+   Footer e Equipe mantidos visualmente como no desktop — apenas
+   escala reduzida para caber.
+   ============================================================
+   ORGANIZAÇÃO: regras agrupadas por breakpoint, do maior ao menor.
+   ============================================================ */
 
-     .stat-card strong { 
-        font-size: 1.4rem; 
-    }
-    .stat-card p {
-         font-size: 0.75rem; 
-    }
-}
- 
 
 /* ============================================================
-           RESPONSIVIDADE - SUBPAGES
-        ============================================================ */
+   ≤ 991.98px  —  TABLET
+============================================================ */
+@media (max-width: 991.98px) {
 
-        /* Desktop e tablet: grid visível, carrossel oculto */
-        @media (min-width: 768px) {
-            .gallery-desktop { display: block; }
-            .gallery-mobile  { display: none !important; }
-        }
+  /* --- Portfólio / Buffets: setas do carrossel --- */
+  .carousel-control-prev { left: 0.5rem; }
+  .carousel-control-next { right: 0.5rem; }
 
-        /* Mobile: carrossel visível, grid oculto */
-        @media (max-width: 767.98px) {
-            .gallery-desktop { display: none !important; }
-            .gallery-mobile  { display: block; padding: 32px 0; }
+  .carousel-control-prev-icon,
+  .carousel-control-next-icon { padding: 1rem; }
 
-            .gallery-hero { padding: 56px 20px 48px; }
+  /* --- Subpages: hero e galeria --- */
+  .hero {
+    height: auto;
+    padding: 2.5rem 0;
+  }
 
-            .cta-section { padding: 56px 20px; }
+  .photo-gallery__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
 
-            /* Botões do CTA empilhados */
-            .cta-btns {
-                flex-direction: column;
-                align-items: center;
-            }
-            .cta-btns .btn-orange,
-            .cta-btns .btn-orange-oco {
-                width: 100%;
-                max-width: 360px;
-                text-align: center;
-            }
-        }
+  .mini-cards {
+    max-width: 220px;
+    flex: 1 1 160px;
+  }
+
+  .filter-bar__item {
+    font-size: 0.5rem;
+    gap: 0.1rem !important;
+  }
+}
+
+
+/* ============================================================
+   ≤ 767.98px  —  MOBILE GERAL
+============================================================ */
+@media (max-width: 767.98px) {
+
+  /* --- Equipe: layout lado a lado --- */
+  .team-card-full .row.g-0 { flex-wrap: nowrap; }
+
+  .team-member-item {
+    flex: 0 0 25% !important;
+    width: 25% !important;
+    max-width: 25% !important;
+  }
+
+  .team-member-item .p-4 { padding: 0.5rem 0.35rem !important; }
+
+  /* Tipografia da equipe — mobile geral */
+  .informacoes-equipe p:first-child {
+    font-size: 0.58rem !important;
+    letter-spacing: 0 !important;
+    margin-bottom: 0.25rem !important;
+  }
+
+  .informacoes-equipe h3 {
+    font-size: 0.7rem !important;
+    margin-bottom: 0.15rem !important;
+  }
+
+  .informacoes-equipe p:last-child {
+    font-size: 0.56rem !important;
+    line-height: 1.15;
+  }
+
+  /* --- Equipe: badge mobile --- */
+
+.team-full-badge {
+    top: 6px;
+    left: 6px;
+    font-size: 0.5rem;
+    padding: 3px 6px;
+    height: auto;
+    width: auto;
+}
+
+  /* --- Como Funciona: 3 cards lado a lado --- */
+  #servico {
+    padding-top: 1rem !important;
+    padding-bottom: 2rem;
+    margin-top: 0;
+  }
+
+  #servico .row.g-4.justify-content-center > .col-4 .custom-card {
+    padding: 0.75rem !important;
+  }
+
+  #servico .row.g-4.justify-content-center > .col-4 .step-icon-wrap {
+    width: 40px;
+    height: 40px;
+    margin-bottom: 0.6rem !important;
+  }
+
+  #servico .row.g-4.justify-content-center > .col-4 .step-icon-wrap svg {
+    width: 18px;
+    height: 18px;
+  }
+
+  #servico .row.g-4.justify-content-center > .col-4 h3.fs-5 { font-size: 0.78rem; }
+
+  #servico .row.g-4.justify-content-center > .col-4 p {
+    font-size: 0.68rem;
+    line-height: 1.3;
+  }
+
+  /* --- Depoimentos --- */
+  .feedback-card { flex-direction: column; }
+
+  .feedback-card__meta {
+    flex: none;
+    width: 100%;
+    border-right: none;
+    border-bottom: 1px solid var(--border-accent-20);
+  }
+
+  /* --- Photo card: remove efeitos no mobile --- */
+  .photo-card__img {
+    filter: none;
+    transition: none;
+  }
+
+  .photo-card__overlay { transition: none; }
+
+  .photo-card:hover .photo-card__img,
+  .photo-card:focus-within .photo-card__img {
+    filter: none;
+    transform: none;
+  }
+
+  .photo-card:hover .photo-card__overlay,
+  .photo-card:focus-within .photo-card__overlay { opacity: 1; }
+
+  .team-card-full:hover .team-full-img {
+    filter: none;
+    transform: none;
+  }
+
+  .team-full-img {
+    height: auto;
+    object-fit: contain;
+    background-color: var(--color-darker);
+  }
+
+  .buffet-card img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    display: block;
+    filter: none;
+    transition: none;
+  }
+
+  /* --- Filter bar: esconde desktop, exibe scroll mobile --- */
+  .filter-bar { display: none; }
+
+  .filter-scroll {
+    display: flex;
+    position: relative;
+    align-items: center;
+    background-color: var(--color-darker);
+    border-top: 1.5px solid var(--color-accent);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    padding: 0.6rem 2.2rem;
+  }
+
+  .filter-scroll__track {
+    display: flex;
+    gap: 0.5rem;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+    list-style: none;
+    scrollbar-width: none;
+  }
+
+  .filter-scroll__track::-webkit-scrollbar { display: none; }
+
+  .filter-scroll__track li {
+    flex: 0 0 auto;
+    scroll-snap-align: start;
+  }
+
+  .filter-scroll__item {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    color: var(--color-gray-400);
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 0.85rem;
+    padding: 0.4rem 0.7rem;
+    border-radius: 999px;
+    border: 1px solid transparent;
+    white-space: nowrap;
+    transition: var(--transition-fast);
+  }
+
+  .filter-scroll__item:hover,
+  .filter-scroll__item:focus-visible {
+    color: var(--color-white);
+    background-color: var(--border-accent-20);
+    outline: none;
+  }
+
+  .filter-scroll__item[aria-current="page"] {
+    color: var(--color-accent);
+    font-weight: 700;
+    border-color: var(--border-accent-30);
+    background-color: var(--border-accent-20);
+  }
+
+  .filter-scroll__item--home { color: var(--color-gray-300); }
+
+  .filter-scroll__arrow {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(to var(--fade-dir, right), var(--color-darker) 40%, transparent);
+    border: none;
+    color: var(--color-accent);
+    font-size: 1.4rem;
+    line-height: 1;
+    z-index: 2;
+  }
+
+  .filter-scroll__arrow--prev { left: 0; --fade-dir: right; }
+  .filter-scroll__arrow--next { right: 0; --fade-dir: left; }
+
+  /* --- Galeria subpages --- */
+  section#galeria p { font-size: 1rem !important; }
+}
+
+/* ============================================================
+   ≤ 720.98px  —  TABLET PEQUENO / MOBILE GRANDE
+============================================================ */
+@media (max-width: 720.98px) {
+
+  /* --- Equipe: foto sem corte --- */
+ .team-full-img {
+    height: auto;
+    object-fit: contain;
+    background-color: var(--color-darker);
+}
+
+  /* badge: só reduz fonte/padding, sem height/width fixos */
+ .team-full-badge {
+    top: 6px;
+    left: 6px;
+    font-size: 0.55rem;
+    padding: 3px 7px;
+    height: auto;
+    width: auto;
+}
+
+  #equipe {
+    position: relative;
+    left: 3%;
+    width: 95%;
+    height: 100%;
+  }
+
+  /* --- Filter bar: scroll horizontal --- */
+  .filter-bar__track {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    justify-content: flex-start !important;
+    scroll-snap-type: x proximity;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+
+  .filter-bar__track::-webkit-scrollbar { display: none; }
+
+  .filter-bar__item { scroll-snap-align: start; }
+
+  .filter-bar__item--home {
+    border-right: none;
+    padding-right: 0.75rem;
+    margin-right: 0;
+  }
+}
+
+
+/* ============================================================
+   ≤ 680px  —  HEADER + HOME/HERO + FAB MÉDIO
+============================================================ */
+@media (max-width: 680px) {
+
+  /* --- Header --- */
+  #header {
+    height: 10vh;
+    padding: 0;
+  }
+
+  #header::after { display: none; }
+
+  #header img {
+    height: 14vh;
+    width: auto;
+    transform: translate(-10vw, -3.5vh);
+  }
+
+  #header div a:first-child,
+  header div nav,
+  header div a:last-child { transform: none; }
+
+  #header .btn-orange { height: auto; }
+
+  .navbar-toggler {
+    border-color: rgba(255, 255, 255, 0.4);
+    transform: translateY(-3.5vh);
+  }
+
+  .navbar-toggler-icon {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(255, 255, 255, 0.85)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+  }
+
+  .navbar-toggler:focus { box-shadow: 0 0 0 2px var(--border-accent-30); }
+
+  .nav-mobile {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background-color: var(--color-darker);
+    border-top: 1px solid var(--border-accent-20);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.35);
+    z-index: 999;
+  }
+
+  .nav-mobile .nav {
+    flex-direction: column;
+    padding: 0.5rem 1.5rem 1rem;
+  }
+
+  .nav-mobile .nav-item {
+    padding: 0.6rem 0;
+    border-bottom: 1px solid var(--border-accent-20);
+  }
+
+  .nav-mobile .nav-item:last-child { border-bottom: none; }
+
+  /* --- Home / Hero --- */
+  section#home {
+    position: relative;
+    height: 68vh;
+    overflow: hidden;
+  }
+
+  #home .carousel-item img {
+    height: 60vh !important;
+    width: 100vw;
+    object-fit: inherit;
+    filter: brightness(45%);
+  }
+
+  #home .hero-content {
+    position: relative !important;
+    z-index: 10;
+    width: 100%;
+    padding: 3rem 1.25rem 3.5rem;
+    text-align: center;
+  }
+
+  #home h1 { font-size: clamp(1.8rem, 7vw, 3rem); }
+
+  #home .hero-p {
+    font-size: 1rem;
+    max-width: 100%;
+    margin-inline: auto;
+  }
+
+  .aumenta {
+    width: 100%;
+    max-width: 320px;
+    height: auto;
+    line-height: 1.4;
+    padding: 0.9rem 1.5rem;
+    font-size: 1rem;
+    white-space: normal;
+  }
+
+  section#home > div:nth-child(3) { padding-top: 0; }
+
+  /* --- Home: indicadores visíveis no mobile --- */
+#carrosselHero .hero-indicators {
+    bottom: 16px;
+    z-index: 200;
+}
+
+  .hero-badge { display: none; }
+
+  .junta {
+    position: relative;
+    bottom: 1vh;
+  }
+
+  .junta3 { transform: translateY(-0.8vh); }
+
+  .hero-content h1 { padding-top: 0.5rem; }
+
+  .btn-orange-oco {
+    border: 2px solid #df552b;
+    background-color: #e95325;
+    color: white;
+    margin-left: 0;
+  }
+
+  .btn-orange-oco:hover {
+    border: none;
+    background-color: #e95325;
+    color: white;
+  }
+
+  /* --- FAB tamanho médio --- */
+  .fab-whatsapp,
+  .fab-instagram {
+    width: 46px;
+    height: 46px;
+    bottom: 16px;
+  }
+
+  .fab-whatsapp svg,
+  .fab-instagram svg {
+    width: 22px;
+    height: 22px;
+  }
+
+  .fab-whatsapp { right: 16px; }
+  .fab-instagram { right: 72px; }
+}
+
+
+/* ============================================================
+   ≤ 575.98px  —  MOBILE PEQUENO
+============================================================ */
+@media (max-width: 575.98px) {
+
+  /* --- Home --- */
+  #home { min-height: 55vh; }
+  section#home > div:nth-child(3) { padding-top: 0; }
+
+  /* --- Como Funciona --- */
+  #servico .row.g-4.justify-content-center > .col-4 .custom-card {
+    padding: 0.5rem !important;
+  }
+
+  #servico .row.g-4.justify-content-center > .col-4 .step-icon-wrap {
+    width: 32px;
+    height: 32px;
+  }
+
+  #servico .row.g-4.justify-content-center > .col-4 p { font-size: 0.68rem; }
+
+  #servico h3 { font-size: 0.8rem !important; }
+
+  .diminui { font-size: 1rem !important; }
+
+  /* --- Serviço Totalmente Flexível --- */
+  #container-flexivel .row.g-4 > div {
+    flex: 0 0 100%;
+    max-width: 90%;
+  }
+
+  /* --- Estatísticas --- */
+  .stat-card strong { font-size: 1.6rem; }
+  .stat-card p { font-size: 0.78rem; }
+
+  /* --- FAB WhatsApp / Instagram --- */
+  .fab-whatsapp,
+  .fab-instagram {
+    width: 50px;
+    height: 50px;
+    bottom: 12px;
+  }
+
+  .fab-whatsapp { right: 10px; }
+  .fab-instagram { right: 67px; }
+
+  /* --- Subpages: galeria e CTA --- */
+  .photo-gallery__grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.5rem;
+  }
+
+  .cta-section__actions {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .cta-section__actions .btn-accent,
+  .cta-section__actions .btn-outline {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .mini-cards {
+    flex: 1 1 100%;
+    max-width: 100%;
+  }
+
+  /* --- Home: indicadores mobile pequeno --- */
+#carrosselHero .hero-indicators {
+    bottom: 12px;
+}
+}
+
+
+/* ============================================================
+   ≤ 370px  —  TELAS MUITO PEQUENAS
+============================================================ */
+@media (max-width: 370px) {
+
+  footer .container {
+    padding-right: 2rem;
+    padding-left: 1rem;
+  }
+
+  section#galeria p { font-size: 1rem !important; }
+
+  /* Equipe: comprime ainda mais em telas muito pequenas */
+  .informacoes-equipe p:first-child { font-size: 0.5rem !important; }
+}
+
+
+/* ============================================================
+   UTILITÁRIO GLOBAL (sem media query)
+============================================================ */
+.bg-section-dark { background-color: var(--color-dark); }
