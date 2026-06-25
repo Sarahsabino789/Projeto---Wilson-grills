@@ -34,6 +34,7 @@
     <link rel="stylesheet" href="assets/css/global.css">
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="stylesheet" href="assets/css/responsivo.css">
+    <link rel="stylesheet" href="assets/css/animations.css">
 </head>
 <body> 
     <!-- Link de acessibilidade: permite pular direto para o conteúdo principal -->
@@ -63,31 +64,120 @@
  
     <main id="conteudo-principal">
         
-        <!-- Seção Hero -->
-        <section id="home" aria-label="Apresentação inicial" class="d-flex flex-column  ">
-
-            <div role="status" aria-live="polite" >
-                    <span>✨ Mais de 10 anos transformando eventos</span>
-                </div>
-            <div class="d-flex flex-column  align-items-center gap-2 vh-80 mt-4 p-2">
-                <h1 class="text-center">
-                    Buffet Profissional <br class="nquebra-mobile">
-                    <span class="corlaranja">Para Seu Evento</span>
-                </h1>
-                
-                <p>Do churrasco tradicional a casamentos elegantes. Personalizamos cada<br> detalhe para criar momentos inesquecíveis.</p>
-                
-                <div>
-                    <a href="#orcamento" role="button" aria-label="Solicitar orçamento gratuito para o seu evento" class="btn btn-orange aumenta">
-                        Do planejamento à execução
-                    </a>
-                    <a href="#portfolio" role="button" aria-label="Ver portfólio de eventos realizados pelo Wilson Grills"
-                    class="btn btn-orange-oco aumenta" >
-                        Ver Nossos Trabalhos
-                    </a>
-                </div>
+       <section id="home"
+         aria-label="Apresentação inicial"
+         class="hero-carousel position-relative">
+ 
+    <!-- Bootstrap Carousel -->
+    <div id="carrosselHero"
+         class="carousel slide carousel-fade "
+         data-bs-ride="carousel"
+         data-bs-interval="5000"
+         aria-roledescription="carrossel"
+         aria-label="Destaques do buffet Wilson's Grills">
+ 
+        <!-- Slides -->
+        <div class="carousel-inner">
+ 
+            <!-- Slide 1 -->
+            <div class="carousel-item active"
+                 aria-roledescription="slide"
+                 aria-label="1 de 3">
+                <img src="https://images.unsplash.com/photo-1555939594-58d7cb561ad1?q=80&w=1920&fit=crop"
+                     class="d-block w-100 hero-slide-img"
+                     alt="Prato de churrasco premium com carnes na brasa"
+                     fetchpriority="high">
+                <div class="hero-overlay" aria-hidden="true"></div>
             </div>
-        </section>
+ 
+            <!-- Slide 2 -->
+            <div class="carousel-item"
+                 aria-roledescription="slide"
+                 aria-label="2 de 3">
+                <img src="https://images.unsplash.com/photo-1544025162-d76694265947?q=80&w=1920&fit=crop"
+                     class="d-block w-100 hero-slide-img"
+                     alt="Picanha fatiada fumegante saindo da grelha"
+                     loading="lazy">
+                <div class="hero-overlay" aria-hidden="true"></div>
+            </div>
+ 
+            <!-- Slide 3 -->
+            <div class="carousel-item"
+                 aria-roledescription="slide"
+                 aria-label="3 de 3">
+                <img src="https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=1920&fit=crop"
+                     class="d-block w-100 hero-slide-img"
+                     alt="Mesa de casamento elegantemente decorada com arranjos e taças"
+                     loading="lazy">
+                <div class="hero-overlay" aria-hidden="true"></div>
+            </div>
+ 
+        </div>
+ 
+        <!-- Controles -->
+        <button class="carousel-control-prev" type="button"
+                data-bs-target="#carrosselHero" data-bs-slide="prev"
+                aria-label="Slide anterior">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        </button>
+        <button class="carousel-control-next" type="button"
+                data-bs-target="#carrosselHero" data-bs-slide="next"
+                aria-label="Próximo slide">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        </button>
+ 
+        <!-- Indicadores -->
+        <div class="carousel-indicators">
+            <button type="button" data-bs-target="#carrosselHero" data-bs-slide-to="0"
+                    class="active" aria-current="true" aria-label="Slide 1"></button>
+            <button type="button" data-bs-target="#carrosselHero" data-bs-slide-to="1"
+                    aria-label="Slide 2"></button>
+            <button type="button" data-bs-target="#carrosselHero" data-bs-slide-to="2"
+                    aria-label="Slide 3"></button>
+        </div>
+ 
+    </div>
+ 
+    <!-- Conteúdo sobre o carrossel -->
+    <div class="hero-content ajustes
+                d-flex flex-column align-items-center text-center w-100 px-3">
+ 
+        <div role="status" aria-live="polite" class="hero-badge mb-3"
+             data-animate="fade-up">
+            <span>✨ Mais de 10 anos transformando eventos</span>
+        </div>
+ 
+        <h1 class="text-white text-center mb-3" data-animate="fade-up" data-delay="100">
+            Buffet Profissional
+            <br class="nquebra-mobile">
+            <span class="corlaranja">Para Seu Evento</span>
+        </h1>
+ 
+        <p class="hero-p text-center mb-4" data-animate="fade-up" data-delay="200">
+            Do churrasco tradicional a casamentos elegantes. Personalizamos cada
+            <br class="d-none d-md-inline">
+            detalhe para criar momentos inesquecíveis.
+        </p>
+ 
+        <div class="d-flex flex-column flex-sm-row align-items-center gap-3"
+             data-animate="fade-up" data-delay="300">
+            <a href="#orcamento"
+               role="button"
+               aria-label="Solicitar orçamento gratuito para o seu evento"
+               class="btn btn-orange aumenta">
+                Solicitar Orçamento Gratuito
+            </a>
+            <a href="#portfolio"
+               role="button"
+               aria-label="Ver portfólio de eventos realizados pelo Wilson's Grills"
+               class="btn btn-orange-oco aumenta">
+                Ver Nossos Trabalhos
+            </a>
+        </div>
+ 
+    </div>
+ 
+</section>
 
             <!-- ============================================================
          COMO FUNCIONA
@@ -249,129 +339,216 @@
     <!-- ============================================================
          PORTFÓLIO / BUFFETS
     ============================================================ -->
-    <section id="portfolio" aria-labelledby="titulo-portfolio" class="py-5 bg-dark-custom">
-        <div class="container">
+    <!--
+=================================================================
+  2. PORTFOLIO — carrossel horizontal + CTA banner + stats
+  Cole substituindo a <section id="portfolio"> atual
+=================================================================
+-->
+<section id="portfolio"
+         aria-labelledby="titulo-portfolio"
+         class="py-5 bg-dark-custom">
+    <div class="container">
  
-            <h2 id="titulo-portfolio" class="section-title text-center mb-2">Nossos <span class="corlaranja">Buffets</span></h2>
-            <p class="text-gray-400 text-center mb-5 fs-5">Clique para ver fotos dos nossos trabalhos</p>
+        <h2 id="titulo-portfolio"
+            class="section-title text-center mb-2"
+            data-animate="fade-up">
+            Nossos <span class="corlaranja">Buffets</span>
+        </h2>
+        <p class="text-gray-400 text-center mb-5 fs-5"
+           data-animate="fade-up" data-delay="100">
+            Clique para ver fotos dos nossos trabalhos
+        </p>
  
-            <!-- Grid de buffets: 3 colunas desktop, 2 tablet, 1 mobile pequeno -->
-            <div class="row g-4 mb-4">
+        <!-- ── Carrossel de cards horizontal ─────────────────── -->
+        <div class="position-relative" data-animate="fade-up" data-delay="200">
  
-                <div class="col-6 col-lg-4">
-                    <a href="subpages/churrasco.html" class="buffet-card" aria-label="Acessar galeria do buffet de Churrasco">
-                        <img src="https://images.unsplash.com/photo-1544025162-d76694265947?q=80&w=600"
-                             alt="Picanha fatiada fumegante na grelha" width="600" height="220" loading="lazy">
-                        <div class="buffet-card-overlay">
-                            <h3>Buffet Churrasco</h3>
-                            <p>Carnes nobres na brasa, tradição e sabor autêntico</p>
-                            <span aria-hidden="true">Ver Galeria →</span>
-                        </div>
-                    </a>
+            <!-- Controle esquerdo -->
+            <button class="buffet-carousel-btn buffet-carousel-prev"
+                    aria-label="Ver buffets anteriores"
+                    onclick="scrollBuffets(-1)">
+                ‹
+            </button>
+ 
+            <!-- Track deslizável -->
+            <div class="buffet-track-wrap">
+                <div class="buffet-track" id="buffetTrack" role="list">
+ 
+                    <div class="buffet-track-item" role="listitem">
+                        <a href="subpages/churrasco.html"
+                           class="buffet-card"
+                           aria-label="Acessar galeria do buffet de Churrasco">
+                            <img src="https://images.unsplash.com/photo-1544025162-d76694265947?q=80&w=600"
+                                 alt="Picanha fatiada fumegante na grelha"
+                                 width="600" height="220" loading="lazy">
+                            <div class="buffet-card-overlay">
+                                <div class="buffet-card-icon" aria-hidden="true">🔥</div>
+                                <h3>Buffet Churrasco</h3>
+                                <p>Carnes nobres na brasa, tradição e sabor autêntico</p>
+                                <span class="buffet-ver" aria-hidden="true">Ver Cardápio →</span>
+                            </div>
+                        </a>
+                    </div>
+ 
+                    <div class="buffet-track-item" role="listitem">
+                        <a href="subpages/casamentos.html"
+                           class="buffet-card"
+                           aria-label="Acessar galeria do buffet de Casamentos">
+                            <img src="https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=600"
+                                 alt="Mesa de casamento elegantemente decorada"
+                                 width="600" height="220" loading="lazy">
+                            <div class="buffet-card-overlay">
+                                <div class="buffet-card-icon" aria-hidden="true">💍</div>
+                                <h3>Buffet Casamento</h3>
+                                <p>Elegância e sofisticação para o seu grande dia</p>
+                                <span class="buffet-ver" aria-hidden="true">Ver Cardápio →</span>
+                            </div>
+                        </a>
+                    </div>
+ 
+                    <div class="buffet-track-item" role="listitem">
+                        <a href="subpages/festas.html"
+                           class="buffet-card"
+                           aria-label="Acessar galeria de Buffet Festas">
+                            <img src="https://images.unsplash.com/photo-1530103862676-de8c9debad1d?q=80&w=600"
+                                 alt="Mesa de festa com decoração e comemorações"
+                                 width="600" height="220" loading="lazy">
+                            <div class="buffet-card-overlay">
+                                <div class="buffet-card-icon" aria-hidden="true">🎉</div>
+                                <h3>Buffet Festas</h3>
+                                <p>Aniversários e comemorações inesquecíveis</p>
+                                <span class="buffet-ver" aria-hidden="true">Ver Cardápio →</span>
+                            </div>
+                        </a>
+                    </div>
+ 
+                    <div class="buffet-track-item" role="listitem">
+                        <a href="subpages/15anos.html"
+                           class="buffet-card"
+                           aria-label="Acessar galeria de Festa de 15 Anos">
+                            <img src="https://images.unsplash.com/photo-1530103862676-de8c9debad1d?q=80&w=600"
+                                 alt="Decoração de festa de 15 anos"
+                                 width="600" height="220" loading="lazy">
+                            <div class="buffet-card-overlay">
+                                <div class="buffet-card-icon" aria-hidden="true">🌸</div>
+                                <h3>Buffet 15 Anos</h3>
+                                <p>Celebre essa data especial com muito estilo</p>
+                                <span class="buffet-ver" aria-hidden="true">Ver Cardápio →</span>
+                            </div>
+                        </a>
+                    </div>
+ 
+                    <div class="buffet-track-item" role="listitem">
+                        <a href="subpages/festajunina.html"
+                           class="buffet-card"
+                           aria-label="Acessar galeria de Festa Junina">
+                            <img src="https://images.unsplash.com/photo-1561532792-7f61c6c7a4e4?q=80&w=600"
+                                 alt="Mesa de festa junina com comidas típicas"
+                                 width="600" height="220" loading="lazy">
+                            <div class="buffet-card-overlay">
+                                <div class="buffet-card-icon" aria-hidden="true">🎪</div>
+                                <h3>Buffet Festa Junina</h3>
+                                <p>Tradição caipira com comidas típicas e muito sabor</p>
+                                <span class="buffet-ver" aria-hidden="true">Ver Cardápio →</span>
+                            </div>
+                        </a>
+                    </div>
+ 
+                    <div class="buffet-track-item" role="listitem">
+                        <a href="subpages/feijoada.html"
+                           class="buffet-card"
+                           aria-label="Acessar galeria de Feijoada">
+                            <img src="https://images.unsplash.com/photo-1555939594-58d7cb561ad1?q=80&w=600"
+                                 alt="Buffet de feijoada completa"
+                                 width="600" height="220" loading="lazy">
+                            <div class="buffet-card-overlay">
+                                <div class="buffet-card-icon" aria-hidden="true">🍲</div>
+                                <h3>Buffet Feijoada</h3>
+                                <p>Feijoada completa e tradicional para seu evento</p>
+                                <span class="buffet-ver" aria-hidden="true">Ver Cardápio →</span>
+                            </div>
+                        </a>
+                    </div>
+ 
+                    <div class="buffet-track-item" role="listitem">
+                        <a href="subpages/cafe.html"
+                           class="buffet-card"
+                           aria-label="Acessar galeria de Café da Manhã">
+                            <img src="https://images.unsplash.com/photo-1504754524776-8f4f37790ca0?q=80&w=600"
+                                 alt="Mesa de café da manhã com pães e frutas"
+                                 width="600" height="220" loading="lazy">
+                            <div class="buffet-card-overlay">
+                                <div class="buffet-card-icon" aria-hidden="true">☕</div>
+                                <h3>Café da Manhã</h3>
+                                <p>Manhãs especiais com um buffet completo e acolhedor</p>
+                                <span class="buffet-ver" aria-hidden="true">Ver Cardápio →</span>
+                            </div>
+                        </a>
+                    </div>
+ 
                 </div>
- 
-                <div class="col-6 col-lg-4">
-                    <a href="subpages/casamentos.html" class="buffet-card" aria-label="Acessar galeria do buffet de Casamentos">
-                        <img src="https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=600"
-                             alt="Mesa de casamento elegantemente decorada" width="600" height="220" loading="lazy">
-                        <div class="buffet-card-overlay">
-                            <h3>Buffet Casamento</h3>
-                            <p>Elegância e sofisticação para o seu grande dia</p>
-                            <span aria-hidden="true">Ver Galeria →</span>
-                        </div>
-                    </a>
-                </div>
- 
-                <div class="col-6 col-lg-4">
-                    <a href="subpages/festas.html" class="buffet-card" aria-label="Acessar galeria de Buffet Festas">
-                        <img src="https://images.unsplash.com/photo-1530103862676-de8c9debad1d?q=80&w=600"
-                             alt="Mesa de festa com decoração e comemorações" width="600" height="220" loading="lazy">
-                        <div class="buffet-card-overlay">
-                            <h3>Buffet Festas</h3>
-                            <p>Aniversários e comemorações inesquecíveis</p>
-                            <span aria-hidden="true">Ver Galeria →</span>
-                        </div>
-                    </a>
-                </div>
- 
-                <div class="col-6 col-lg-4">
-                    <a href="subpages/15anos.html" class="buffet-card" aria-label="Acessar galeria de Festa de 15 Anos">
-                        <img src="https://images.unsplash.com/photo-1530103862676-de8c9debad1d?q=80&w=600"
-                             alt="Decoração de festa de 15 anos" width="600" height="220" loading="lazy">
-                        <div class="buffet-card-overlay">
-                            <h3>Buffet Festa de 15 Anos</h3>
-                            <p>Celebre essa data especial com estilo e qualidade</p>
-                            <span aria-hidden="true">Ver Galeria →</span>
-                        </div>
-                    </a>
-                </div>
- 
-                <div class="col-6 col-lg-4">
-                    <a href="subpages/festajunina.html" class="buffet-card" aria-label="Acessar galeria de Festa Junina">
-                        <img src="https://images.unsplash.com/photo-1561532792-7f61c6c7a4e4?q=80&w=600"
-                             alt="Mesa de festa junina com comidas típicas" width="600" height="220" loading="lazy">
-                        <div class="buffet-card-overlay">
-                            <h3>Buffet Festa Junina</h3>
-                            <p>Tradição caipira com comidas típicas e muito sabor</p>
-                            <span aria-hidden="true">Ver Galeria →</span>
-                        </div>
-                    </a>
-                </div>
- 
-                <div class="col-6 col-lg-4">
-                    <a href="subpages/feijoada.html" class="buffet-card" aria-label="Acessar galeria de Feijoada">
-                        <img src="https://images.unsplash.com/photo-1555939594-58d7cb561ad1?q=80&w=600"
-                             alt="Buffet de feijoada completa" width="600" height="220" loading="lazy">
-                        <div class="buffet-card-overlay">
-                            <h3>Buffet Feijoada</h3>
-                            <p>Feijoada completa e tradicional para seu evento</p>
-                            <span aria-hidden="true">Ver Galeria →</span>
-                        </div>
-                    </a>
-                </div>
-
-                 <div class="col-6 col-lg-4">
-                    <a href="subpages/feijoada.html" class="buffet-card" aria-label="Acessar galeria de Feijoada">
-                        <img src="https://images.unsplash.com/photo-1555939594-58d7cb561ad1?q=80&w=600"
-                             alt="Buffet de feijoada completa" width="600" height="220" loading="lazy">
-                        <div class="buffet-card-overlay">
-                            <h3>Café da manhã</h3>
-                            <p>Feijoada completa e tradicional para seu evento</p>
-                            <span aria-hidden="true">Ver Galeria →</span>
-                        </div>
-                    </a>
-                </div>
- 
             </div>
  
-            <!-- Estatísticas: sempre 3 colunas -->
-            <div class="row g-3 mt-3" role="region" aria-label="Estatísticas do buffet Wilson's Grills">
+            <!-- Controle direito -->
+            <button class="buffet-carousel-btn buffet-carousel-next"
+                    aria-label="Ver próximos buffets"
+                    onclick="scrollBuffets(1)">
+                ›
+            </button>
  
-                <div class="col-4">
-                    <div class="stat-card text-center py-4 px-2">
-                        <strong class="d-block mb-2" aria-label="Mais de 500 eventos realizados">500+</strong>
-                        <p class="text-gray-400 mb-0 small">Eventos Realizados</p>
-                    </div>
-                </div>
- 
-                <div class="col-4">
-                    <div class="stat-card text-center py-4 px-2">
-                        <strong class="d-block mb-2" aria-label="Mais de 20 anos de experiência">20+</strong>
-                        <p class="text-gray-400 mb-0 small">Anos de Experiência</p>
-                    </div>
-                </div>
- 
-                <div class="col-4">
-                    <div class="stat-card text-center py-4 px-2">
-                        <strong class="d-block mb-2" aria-label="100% dos clientes satisfeitos">100%</strong>
-                        <p class="text-gray-400 mb-0 small">Clientes Satisfeitos</p>
-                    </div>
-                </div>
- 
-            </div>
         </div>
-    </section>
  
+        <!-- ── Banner CTA ─────────────────────────────────────── -->
+        <div class="buffet-cta-banner custom-card d-flex flex-column
+                    flex-md-row align-items-center justify-content-between
+                    gap-3 p-4 mt-4"
+             data-animate="fade-up" data-delay="100">
+            <p class="mb-0 text-white text-center text-md-start">
+                ✨ Estas são apenas algumas das nossas modalidades.
+                <strong>Entre em contato</strong> e conte como é o seu evento
+                — temos muito mais opções disponíveis!
+            </p>
+            <a href="#orcamento"
+               class="btn btn-orange-oco-outline flex-shrink-0"
+               aria-label="Falar com a equipe Wilson's Grills">
+                Falar com a Gente
+            </a>
+        </div>
+ 
+        <!-- ── Estatísticas ───────────────────────────────────── -->
+        <div class="row g-3 mt-3"
+             role="region"
+             aria-label="Estatísticas do buffet Wilson's Grills">
+ 
+            <div class="col-4" data-animate="fade-up" data-delay="100">
+                <div class="stat-card text-center py-4 px-2">
+                    <strong class="d-block mb-2"
+                            aria-label="Mais de 500 eventos realizados">500+</strong>
+                    <p class="text-gray-400 mb-0 small">Eventos Realizados</p>
+                </div>
+            </div>
+ 
+            <div class="col-4" data-animate="fade-up" data-delay="200">
+                <div class="stat-card text-center py-4 px-2">
+                    <strong class="d-block mb-2"
+                            aria-label="Mais de 20 anos de experiência">20+</strong>
+                    <p class="text-gray-400 mb-0 small">Anos de Experiência</p>
+                </div>
+            </div>
+ 
+            <div class="col-4" data-animate="fade-up" data-delay="300">
+                <div class="stat-card text-center py-4 px-2">
+                    <strong class="d-block mb-2"
+                            aria-label="100% dos clientes satisfeitos">100%</strong>
+                    <p class="text-gray-400 mb-0 small">Clientes Satisfeitos</p>
+                </div>
+            </div>
+ 
+        </div>
+ 
+    </div>
+</section>
+
     <!-- ============================================================
          DEPOIMENTOS
     ============================================================ -->
