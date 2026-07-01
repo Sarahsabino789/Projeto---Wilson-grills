@@ -25,9 +25,8 @@ Fotos Reais: O site utiliza fotografias reais dos eventos realizados, trazendo a
 Foco no Cliente: A estrutura do site prioriza o contato rápido e a demonstração clara de que o buffet é totalmente customizável conforme o desejo do contratante.
 
 🚀 Como visualizar
-(Aqui você pode colocar um link caso tenha feito o deploy do site, por exemplo, no Vercel, Netlify ou GitHub Pages)
-
-Exemplo: Acesse o site oficial em: www.wilsonsgrills.com.br
+Acesse aqui:
+https://www.wilson-grills.com/
 
 👨‍💻 Sobre o Desenvolvedor
 Este é um projeto real, criado com o intuito de solucionar uma necessidade de mercado e demonstrar habilidades práticas de desenvolvimento web front-end e UI/UX design.
